@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEN LAB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="layout_header.css">
+</head>
+<body>
+<header>
+    <div class="bg">
+        <div class="logo">LEN LAB</div>
+        <div class="menu">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#!">Trang chủ</a></li>
+                    <li class="dropdown">
+                        <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Nguyên phụ liệu</a></li>
+                            <li><a href="#">Đồ trang trí</a></li>
+                            <li><a href="#">Thời trang len</a></li>
+                            <li><a href="#">Combo tự làm</a></li>
+                            <li><a href="#">Sách hướng dẫn</a></li>
+                            <li><a href="#">Thú bông len</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#!">Giới thiệu <i class="fas fa-chevron-down icon-menu"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Về chúng tôi </a></li>
+                            <li><a href="#">Liên hệ </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Tin tức</a></li>
+                    <div class="user-cart">
+                        <!-- Search -->
+                        <div class="search-box">
+                            <form action="" id="search-form">
+                                <input type="text" id="search-text" placeholder="Tìm kiếm...">
+                                <button type="submit" id="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!-- User Profile -->
+                        <div class="user-profile">
+                            <i class="fas fa-user" id="user-btn"></i>
+                            <div class="dropdown-menu user-dropdown">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
+                                    <li><a href="#"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Cart -->
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart" id="cart-btn"></i>
+                            <div class="cart-count">0</div>
+                            <div class="dropdown-menu cart-dropdown">
+                                <p>Giỏ hàng của bạn trống.</p>
+                                <a href="#">Đăng nhập để xem sản phẩm</a>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        </div>
+    
+</header>
+
+<script>
+$(document).ready(function () {
+    // Mở/đóng menu khi click vào "Giới thiệu" và "Sản phẩm"
+    $('.dropdown > a').click(function (e) {
+        e.preventDefault();
+        var $dropdownMenu = $(this).next('.dropdown-menu');
+        
+        // Đóng tất cả các menu khác
+        $('.dropdown-menu').not($dropdownMenu).slideUp();
+        // Toggle menu hiện tại
+        $dropdownMenu.stop(true, true).slideToggle();
+
+        // Toggle mũi tên chỉ hướng
+        $(this).find('.icon-menu').toggleClass('fa-chevron-down fa-chevron-right');
+    });
+
+    // Đảm bảo rằng dropdown đóng lại khi click ra ngoài
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').slideUp();
+            $('.icon-menu').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+        }
+    });
+
+    // Toggle user profile dropdown
+    $('#user-btn').click(function (e) {
+        e.stopPropagation(); // Prevent closing the dropdown when clicking on the user profile button
+        $('.user-dropdown').stop(true, true).slideToggle();
+    });
+
+    // Close dropdown when clicking outside
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.user-profile').length) {
+            $('.user-dropdown').slideUp();
+        }
+    });
+});
+</script>
+</body>
+</html>

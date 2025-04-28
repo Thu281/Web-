@@ -1,0 +1,220 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FBF4E4;
+    padding: 20px;
+}
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+.cart-section /*Giỏ hàng của bạn*/ 
+{
+    background-color: #F5D28E;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+.summary-section /*Tóm tắt đơn hàng*/
+{
+    background-color: #FBF4E4;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.total {
+    font-weight: bold;
+    font-size: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.payment-alert {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 15px;
+}
+.product-info {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+.product-image img {
+    width: 207.82px;
+    height: 225px;
+    background-color: #f5f5f5;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+.product-details {
+    flex: 1;
+}
+.product-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex; /* Sử dụng Flexbox để xếp tên và giá ngang hàng */
+    justify-content: space-between; /* Căn chỉnh tên và giá tiền */
+    align-items: center; /* Canh giữa theo chiều dọc */
+}
+.product-price 
+{
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000; /* Màu sắc cho giá tiền */
+}
+.product-info-line {
+    font-size: 14px;
+    color: #232321;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.category-line:hover, .color-line:hover {
+    text-decoration: underline;
+}
+.product-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.quantity-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+.size-selector {
+    display: flex;
+    align-items: center;
+}
+.size-dropdown {
+    width: 50px;
+    padding: 4px 8px;
+    border: none;
+    background-color: #F5D28E;
+    color: #232321;
+    margin-left: 8px;
+}
+.payment-section {
+    margin-top: 20px;
+}
+.payment-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.payment-notice 
+{
+    color: #d9534f;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.divider {
+    margin-bottom: 15px;
+ }
+.btn-voucher {
+    width: 100%;
+    text-align: left;
+    border: 1px dashed #ddd;
+    background-color: #FBF4E4;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+}
+.btn-checkout {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #E56332;
+    border: none;
+    color: white;
+}
+.btn-checkout:hover {
+    background-color: #d35400;
+}
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.action-link {
+    color: #AB401C;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.action-link:hover {
+    color: #333;
+    text-decoration: underline;
+}
+.action-link i {
+    margin-right: 5px; /* Khoảng cách giữa icon và text */
+}    
+.underline {
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.3);
+}
+.special-offer {
+    background-color: none; /* Màu nền vàng sáng */
+    padding: 10px 20px; /* Thêm padding */
+    text-align: left; /* Canh giữa chữ */
+    font-size: 18px; /* Cỡ chữ */
+    font-weight: bold; /* Chữ đậm */
+    color: #333; /* Màu chữ */
+    margin-bottom: 0; /* Khoảng cách với giỏ hàng */
+    border-radius: 0; /* Bo tròn các góc */
+    width: 100%; /* Đảm bảo chiếm hết chiều rộng */
+}
+.call-to-action {
+    background-color: none; /* Màu nền vàng sáng */
+    padding: 10px 20px; /* Thêm padding */
+    text-align: left; /* Canh giữa chữ */
+    font-size: 18px; /* Cỡ chữ */
+    font-weight: normal; /* Chữ đậm */
+    color: gray; /* Màu chữ */
+    margin-top: 0; /* Khoảng cách với giỏ hàng */
+    margin-bottom: 30px; /* Khoảng cách xuống dưới */
+    border-radius: 5px; /* Bo tròn các góc */
+    width: 100%; /* Đảm bảo chiếm hết chiều rộng */
+}
+.special-offer, .call-to-action {
+    line-height: 0.5;
+}
+
+
+
+    
