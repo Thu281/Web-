@@ -214,19 +214,17 @@ nav ul li a:hover {
 .user-dropdown ul li:hover {
     background-color: #F0C2AA;
 }
-/* Footer */
 footer {
     background: linear-gradient( #F0C2AA 50%, #F5D28E 50%);
-    padding: 40px 60px;
+    padding: 20px 60px;
     margin-top: 30px;
     box-sizing: border-box;
 }
 
 .footer-bg {
-    width: 80%;
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 40px 30px;
+    padding: 20px 6px;
     background: linear-gradient(#F0C2AA 50%, #F5D28E 50%);
     justify-content: space-between;
     border-radius: 12px;
@@ -237,36 +235,38 @@ footer {
     max-width: 100%;
     padding: 0 20px;
 }
-
-/* Phần newsletter */
+/* Newsletter section - Đã chỉnh sang trái */
 .newsletter-section {
-    text-align: center;
-    padding: 0 0 30px;
-    
-    margin-bottom: 30px;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 40px;
+    width: 100%;
 }
 
 .newsletter-section h2 {
     font-size: 28px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: #AA401C;
+    text-align: left;
 }
 
 .newsletter-section p {
     font-size: 16px;
     margin-bottom: 20px;
+    text-align: left;
 }
 
 .newsletter-form {
     display: flex;
-    justify-content: center;
-    max-width: 500px;
-    margin: 0 auto;
+    justify-content: flex-start; 
+    max-width: 100%;
+    margin: 0; 
 }
 
 .newsletter-form input {
     flex: 1;
+    max-width: 400px;
     padding: 12px 15px;
     border: 2px solid #AB401C;
     border-right: none;
@@ -287,21 +287,28 @@ footer {
     font-weight: bold;
     font-size: 16px;
     transition: background-color 0.3s;
+    white-space: nowrap;
 }
 
 .newsletter-form button:hover {
     background-color: #cf7e63;
 }
 
-/* Footer logo */
+/* Phần chữ Len Lab - Giữ nguyên bên phải */
+.footer-logo {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
 .footer-logo h1 {
     font-family: 'Rowdies', cursive;
-    font-size: 36px;
+    font-size: 90px;
     font-weight: 700;
     color: #AB401C;
-    margin-top: 20px;
-    text-align: center;
+    margin: 0;
+    line-height: 1;
     letter-spacing: 1px;
+    display: inline-block;
 }
 
 .footer-logo h1 span {
@@ -309,12 +316,12 @@ footer {
     vertical-align: super;
 }
 
+/* Các cột thông tin */
 .footer-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     padding: 20px 0;
-    align-items: start;
 }
 
 .footer-column {
@@ -369,7 +376,7 @@ footer {
     color: #AA401C;
 }
 
-/* Phần social */
+/* Social icons */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -392,13 +399,19 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
     border-top: 1px solid #8A3B12;
     font-size: 14px;
     color: #8A3B12;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .footer-logo h1 {
+        font-size: 70px;
+    }
+}
+
 @media (max-width: 768px) {
     footer {
         padding: 20px;
@@ -408,23 +421,30 @@ footer {
         padding: 30px 20px;
     }
     
-    .newsletter-form {
-        flex-direction: column;
+    .footer-logo h1 {
+        font-size: 50px;
+        text-align: center;
     }
     
-    .newsletter-form input,
-    .newsletter-form button {
-        width: 100%;
-        border-radius: 8px;
-        border: 2px solid #8A3B12;
-        margin: 5px 0;
+    .newsletter-section {
+        text-align: center;
+    }
+    
+    .newsletter-section h2,
+    .newsletter-section p {
+        text-align: center;
+    }
+    
+    .newsletter-form {
+        justify-content: center;
     }
     
     .footer-content {
         grid-template-columns: 1fr;
     }
     
-    .footer-logo h1 {
-        font-size: 32px;
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
