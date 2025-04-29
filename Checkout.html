@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>CHECK OUT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="layout_checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>CHECK OUT</title>
+</head>
+<body>
+    <div class="container-fluid cart-container">
+        <div id="header-placeholder"></div>
+        <script>
+        $(function() {
+            $("#header-placeholder").load("Header.html");
+            $("#footer-placeholder").load("Footer.html");
+        });
+        </script>
+        <h1 class="ps-4">Đăng nhập và thanh toán nhanh hơn</h1>
+        <div class="row">
+            <!-- Cột trái: Thông tin liên hệ và địa chỉ -->
+            <div class="col-md-8">
+                <div class="p-4 mb-4" style="background-color: #FBF4E4;">
+                    <!-- Phần Thông tin liên hệ -->
+                    <div class="section">
+                        <h2>Thông tin liên hệ</h2>
+                        <p>Chúng tôi sẽ sử dụng thông tin này để cập nhật cho bạn về tình trạng giao hàng.</p>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+    
+                        <h3 class="mt-4 mb-3"><strong>Địa chỉ giao hàng</strong></h3>
+    
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Họ">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Tên">
+                            </div>
+                        </div>
+    
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Địa chỉ">
+                            <div class="address-hint">Bắt đầu gõ địa chỉ hoặc mã bưu chính của bạn để nhận gợi ý</div>
+                        </div>
+    
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="SĐT">
+                            <div class="sdt-hint">E.g: 09xxxxxxxx</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Cột phải: Tóm tắt và chi tiết đơn hàng -->
+            <div class="col-md-4">
+                <!-- Phần Tóm tắt đơn hàng -->
+                <div class="order-section">
+                    <div class="order-summary-box p-4">
+                        <div class="order-section-title">Tóm tắt đơn hàng</div>
+                        <div class="order-item">
+                            <span>1 mặt hàng</span>
+                            <span>123.000đ</span>
+                        </div>
+                        <div class="order-item">
+                            <span>Phí vận chuyển</span>
+                            <span>10.000đ</span>
+                        </div>
+                        <div class="order-item">
+                            <span>Thuế</span>
+                            <span>-</span>
+                        </div>
+                        <div class="order-item order-total">
+                            <span>Tổng cộng</span>
+                            <span>133.000đ</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phần Chi tiết đơn hàng -->
+                <div class="order-section">
+                    <div class="order-section-title">Chi tiết đơn hàng</div>
+                    <div class="order-details">
+                        <div class="row align-items-center">
+                            <!-- Cột hình ảnh -->
+                            <div class="col-4 product-image">
+                                <img src="đóa hồng.jpg" alt="Sản phẩm" class="img-fluid rounded">
+                            </div>
+                            
+                            <!-- Cột thông tin sản phẩm -->
+                            <div class="col-6 product-info">
+                                <div class="product-name"><strong>ĐÓA HOA TULIP LEN</strong></div>
+                                <div class="product-category">Danh mục sản phẩm</div>
+                                <div class="product-attributes">
+                                    <div>Màu sắc: Đỏ</div>
+                                    <div>Kích thước: 10</div>
+                                    <div>Số lượng: 1</div>
+                                    <!-- Cột giá sản phẩm -->
+                                    <div class="col-3 product-price" style="color: black;">
+                                        133.000đ
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Có thể thêm các chức năng jQuery ở đây nếu cần
+            // Ví dụ: tự động hoàn thành địa chỉ hoặc kiểm tra biểu mẫu
+            
+            // Ví dụ: Làm nổi bật các trường nhập liệu khi được chọn
+            $('input').focus(function() {
+                $(this).css('border-color', '#80bdff');
+                $(this).css('box-shadow', '0 0 0 0.2rem rgba(0,123,255,.25)');
+            }).blur(function() {
+                $(this).css('border-color', '#ddd');
+                $(this).css('box-shadow', 'none');
+            });
+        });
+    </script>
+    <div id="footer-placeholder"></div>
+</body>
+</html>
