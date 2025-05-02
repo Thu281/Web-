@@ -151,6 +151,12 @@ body {
     color: #232321;
     margin-left: 8px;
 }
+.size-dropdown.color {
+    min-width: 75px;
+    min-height: 35px;
+    font-size: 14px;
+    line-height: 1.5;
+}
 .payment-section {
     margin-top: 20px;
 }
