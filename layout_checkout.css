@@ -141,3 +141,57 @@ hr {
     height: 158px;
     border-radius: 6px;  /* Bo tròn góc */
 }
+.delivery-option {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.delivery-option:hover {
+    border-color: #AB401C;
+}
+
+.option-active {
+    border-color: #AB401C;
+    background-color: #FFE7C2;
+}
+.delivery-method, .delivery-option {
+    background-color: #FBF4E4; /* màu nền nhạt */
+    border: 1px solid #F5D28E; /* viền */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.delivery-method.selected, .delivery-option.selected {
+    background-color: #F5D28E; /* màu nền khi được chọn */
+    border-color: black;
+}
+.method-price {
+    font-weight: bold;
+}
+input[type="checkbox"] {
+    accent-color: #E56332; /* Cam (hoặc màu bạn muốn) */
+}
+.newsletter-text {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+.checkout-btn {
+    margin-top: 20px;
+    margin-left: 5px;
+    border-radius: 100px;
+    padding: 10px 48px;            /* Phóng to khung */
+    font-size: 14px;               /* Tăng cỡ chữ nếu cần */
+    text-align: center;            /* Căn giữa chữ theo chiều ngang */
+    display: inline-block;         /* Giữ nút không bị kéo rộng */
+    background-color: #E56332;     /* (Tùy chọn) màu nền nút */
+    color: white;                  /* (Tùy chọn) màu chữ */
+    border: none;                  /* (Tùy chọn) bỏ viền */
+    cursor: pointer;              /* Con trỏ khi hover */
+}
