@@ -35,7 +35,7 @@
                 <div class="cart-section">
                     <div class="section-title">Giỏ hàng của bạn</div>
                     <div class="payment-notice" style="color: #d9534f; font-size: 14px; margin-bottom: 8px;">
-                         Giỏ hàng của bạn chưa được thanh toán - Thanh toán ngay để đảm bảo có hàng!
+                        Giỏ hàng của bạn chưa được thanh toán - Thanh toán ngay để đảm bảo có hàng!
                     </div>
                     <div class="divider" style="border-bottom: 1px solid #eee; margin-bottom: 15px;"></div>
                     <div class="product-info">
@@ -84,9 +84,12 @@
                                 <span class="action-link">
                                     <i class="fas fa-trash-alt"></i> Xóa
                                 </span>
-                                <span class="action-link">
+                                <span class="action-link btn-favorite" style="cursor:pointer;">
                                     <i class="fas fa-heart"></i> Lưu vào mục yêu thích
                                 </span>
+                                <div id="favorite-toast" style="display:none; position:fixed; bottom:20px; right:20px; background:#4caf50; color:white; padding:10px 15px; border-radius:5px; z-index:9999;">
+                                    Đã lưu vào mục yêu thích
+                                </div>
                             </div>                            
                         </div>
                     </div>
@@ -114,7 +117,7 @@
                         <span id="total-price">133.000đ</span>
                     </div>
                     <div class="payment-section">
-                        <button class="btn btn-checkout">THANH TOÁN</button>
+                        <a href="Checkout.html" class="btn btn-checkout">THANH TOÁN</a>
                         <button class="btn btn-voucher underline">Sử dụng mã giảm giá</button>
                     </div>
                 </div>
@@ -124,7 +127,7 @@
 
     <!--Có thể bạn quan tâm-->
     <div class="related-products">
-        <h2 class="section-title">CÓ THỂ BẠN QUAN TÂM</h2>
+        <h2 class="section-title2">CÓ THỂ BẠN QUAN TÂM</h2>
         <div class="product-grid">
           <div class="product-card">
             <div class="product-tag">New</div>
@@ -149,7 +152,7 @@
             <div class="product-img">
               <img src="P9.1.webp" alt="Kẽm Cắm Hoa Giấy, Hoa Nhựa Dài 60cm">
             </div>
-            <h4>Kẽm Cắm Hoa Giấy, Hoa Nhựa Dài 60cm</h4>
+            <h4>Kẽm Cắm Hoa Giấy, Hoa Nhựa Dài 60cm  Combo 10 cái</h4>
             <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
           </div>
           
@@ -165,15 +168,34 @@
     </div>
 
     <script>
+        var productPrice = 123000;
+        var shippingFee = 10000;
+    
+        function updateTotalPrice() {
+            var totalQuantity = 0;
+            var totalPrice = 0;
+    
+            $('.quantity-input').each(function() {
+                var quantity = parseInt($(this).val());
+                totalQuantity += quantity;
+                totalPrice += quantity * productPrice;
+            });
+    
+            $('#product-total').text(formatCurrency(totalPrice));
+            var grandTotal = totalPrice + shippingFee;
+            $('#total-price').text(formatCurrency(grandTotal));
+        }
+    
+        function formatCurrency(amount) {
+            return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + 'đ';
+        }
+    
         $(document).ready(function() {
-            var productPrice = 123000;  // Giá sản phẩm mặc định
-            var shippingFee = 10000;  // Phí vận chuyển
-
             // Xử lý tăng giảm số lượng
             $('.quantity-btn').click(function() {
                 var input = $(this).siblings('.quantity-input');
                 var currentVal = parseInt(input.val());
-                
+    
                 if ($(this).text() == '+') {
                     input.val(currentVal + 1);
                 } else {
@@ -183,7 +205,7 @@
                 }
                 updateTotalPrice();
             });
-            
+    
             // Xử lý nhập số lượng thủ công
             $('.quantity-input').change(function() {
                 var value = parseInt($(this).val());
@@ -192,32 +214,26 @@
                 }
                 updateTotalPrice();
             });
-
-            // Hàm tính lại tổng tiền
-            function updateTotalPrice() {
-                var totalQuantity = 0;
-                var totalPrice = 0;
-
-                // Lặp qua tất cả các sản phẩm trong giỏ hàng
-                $('.quantity-input').each(function() {
-                    var quantity = parseInt($(this).val());
-                    totalQuantity += quantity;
-                    totalPrice += quantity * productPrice;  // Tính tổng tiền cho sản phẩm
-                });
-
-                // Cập nhật lại tổng tiền sản phẩm
-                $('#product-total').text(formatCurrency(totalPrice));
-
-                // Tính tổng tiền bao gồm phí vận chuyển
-                var grandTotal = totalPrice + shippingFee;
-                $('#total-price').text(formatCurrency(grandTotal));
-            }
-
-            // Hàm định dạng tiền tệ (123000 -> 123.000đ)
-            function formatCurrency(amount) {
-                return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + 'đ';
+    
+            // Gọi lần đầu khi trang tải
+            updateTotalPrice();
+        });
+    
+        // Xử lý xóa sản phẩm
+        $(".product-actions .action-link").click(function () {
+            if ($(this).find(".fa-trash-alt").length > 0) {
+                if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?")) {
+                    $(this).closest(".product-info").remove();
+                    updateTotalPrice();
+                }
             }
         });
+
+        $(document).ready(function () {
+        $('.btn-favorite').click(function () {
+            $('#favorite-toast').fadeIn(300).delay(1500).fadeOut(300);
+        });
+    });
     </script>
     
     <div id="footer-placeholder"></div>
