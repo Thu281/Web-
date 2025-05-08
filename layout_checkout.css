@@ -58,6 +58,7 @@ h2 {
     padding: 10px 12px;
     border-radius: 4px;
     border: 1px solid #AB401C;
+    color: gray;
 }
 
 .order-summary, .order-section {
@@ -249,3 +250,107 @@ hr, .divider {
 }
 
 
+/* Popup overlay */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  /* Nội dung popup */
+  .popup-content {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 0.3s ease;
+  }
+  
+  /* Hiệu ứng zoom popup */
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Vòng tròn + tick */
+  .checkmark-circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+  }
+  
+  .checkmark-circle svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Vòng tròn */
+  .checkmark-circle-bg {
+    stroke: #4CAF50;
+    stroke-width: 4;
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+    animation: drawCircle 0.5s ease-out forwards;
+  }
+  
+  /* Tick */
+  .checkmark {
+    stroke: #4CAF50;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: drawCheck 0.4s 0.5s ease-out forwards;
+  }
+  
+  /* Animation: Vẽ vòng tròn */
+  @keyframes drawCircle {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  /* Animation: Vẽ tick */
+  @keyframes drawCheck {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  /* Dòng chữ */
+  .success-text {
+    font-size: 20px;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 0.4s 1s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Nút THANH TOÁN giữ nguyên */
+  .checkout-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
