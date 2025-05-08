@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="layout_checkout.css">
     <link rel="stylesheet" href="layout_footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>CHECK OUT</title>
 </head>
 <body>
     <div class="container-fluid cart-container">
@@ -190,7 +189,7 @@
                             'Tây Ninh': ['Thành phố Tây Ninh', 'Huyện Tân Biên', 'Huyện Tân Châu', 'Huyện Dương Minh Châu', 'Huyện Châu Thành', 'Huyện Hòa Thành', 'Huyện Gò Dầu', 'Huyện Bến Cầu', 'Huyện Trảng Bàng'],
                             'Bình Dương': ['Thành phố Thủ Dầu Một', 'Huyện Bàu Bàng', 'Huyện Dầu Tiếng', 'Thị xã Bến Cát', 'Huyện Phú Giáo', 'Thị xã Tân Uyên', 'Thị xã Dĩ An', 'Thị xã Thuận An', 'Huyện Bắc Tân Uyên'],
                             'Đồng Nai': ['Thành phố Biên Hòa', 'Thị xã Long Khánh', 'Huyện Tân Phú', 'Huyện Vĩnh Cửu', 'Huyện Định Quán', 'Huyện Trảng Bom', 'Huyện Thống Nhất', 'Huyện Cẩm Mỹ', 'Huyện Long Thành', 'Huyện Xuân Lộc', 'Huyện Nhơn Trạch'],
-                            'Bà Rịa - Vũng Tàu': ['Thành phố Vũng Tàu', 'Thành phố Bà Rịa', 'Huyện Châu Đức', 'Huyện Xuyên Mộc', 'Huyện Long Điền', 'Huyện Đất Đỏ', 'Huyện Tân Thành'],
+                            'Bà Rịa Vũng Tàu': ['Thành phố Vũng Tàu', 'Thành phố Bà Rịa', 'Huyện Châu Đức', 'Huyện Xuyên Mộc', 'Huyện Long Điền', 'Huyện Đất Đỏ', 'Huyện Tân Thành'],
                             'Thành phố Hồ Chí Minh': ['Quận 1', 'Quận 12', 'Quận Thủ Đức', 'Quận 9', 'Quận Gò Vấp', 'Quận Bình Thạnh', 'Quận Tân Bình', 'Quận Tân Phú', 'Quận Phú Nhuận', 'Quận 2', 'Quận 3', 'Quận 10', 'Quận 11', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 8', 'Quận Bình Tân', 'Quận 7', 'Huyện Củ Chi', 'Huyện Hóc Môn', 'Huyện Bình Chánh', 'Huyện Nhà Bè', 'Huyện Cần Giờ'],
                             'Long An': ['Thành phố Tân An', 'Thị xã Kiến Tường', 'Huyện Tân Hưng', 'Huyện Vĩnh Hưng', 'Huyện Mộc Hóa', 'Huyện Tân Thạnh', 'Huyện Thạnh Hóa', 'Huyện Đức Huệ', 'Huyện Đức Hòa', 'Huyện Bến Lức', 'Huyện Thủ Thừa', 'Huyện Tân Trụ', 'Huyện Cần Đước', 'Huyện Cần Giuộc', 'Huyện Châu Thành'],
                             'Tiền Giang': ['Thành phố Mỹ Tho', 'Thị xã Gò Công', 'Thị xã Cai Lậy', 'Huyện Tân Phước', 'Huyện Cái Bè', 'Huyện Cai Lậy', 'Huyện Châu Thành', 'Huyện Chợ Gạo', 'Huyện Gò Công Tây', 'Huyện Gò Công Đông', 'Huyện Tân Phú Đông'],
@@ -308,8 +307,23 @@
                         </div>
                     
                         <div class="divider"></div>
-                    
-                        <button class="checkout-btn">XEM LẠI VÀ THANH TOÁN</button>
+
+                        <button class="checkout-btn" onclick="showSuccessPopup()">THANH TOÁN</button>
+
+                        <div id="overlay" class="overlay"></div>
+                        
+                        <!-- Popup thành công -->
+                        <div id="success-popup" class="popup">
+                            <div class="popup-content">
+                                <div class="checkmark-circle">
+                                    <svg viewBox="0 0 52 52">
+                                        <circle class="checkmark-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+                                        <path class="checkmark" fill="none" d="M14 27l8 8 16-16"/>
+                                    </svg>
+                                </div>
+                                <p class="success-text">ĐÃ THANH TOÁN THÀNH CÔNG</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -368,6 +382,7 @@
         </div>
     </div>
 
+
     <script>
         $(document).ready(function() {
             $('.delivery-option').click(function() {
@@ -383,6 +398,15 @@
             $(this).css('border-color', '#ddd');
             $(this).css('box-shadow', 'none');
         });
+        
+        function showSuccessPopup() {
+            const popup = document.getElementById('success-popup');
+            popup.style.display = 'flex';
+            // Ẩn popup sau 5 giây
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
+        }
     </script>
     
     <div id="footer-placeholder"></div>  
