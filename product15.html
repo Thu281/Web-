@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Áo lưới - Len Lab</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="product.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="bg">
+      <div class="logo">LEN LAB</div>
+      <div class="menu">
+        <nav class="nav">
+          <ul>
+            <li><a href="#!">Trang chủ</a></li>
+            <li class="dropdown">
+              <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Nguyên phụ liệu</a></li>
+                <li><a href="#">Đồ trang trí</a></li>
+                <li><a href="#">Thời trang len</a></li>
+                <li><a href="#">Combo tự làm</a></li>
+                <li><a href="#">Sách hướng dẫn</a></li>
+                <li><a href="#">Thú bông len</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#!">Giới thiệu <i class="fas fa-chevron-down icon-menu"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Về chúng tôi</a></li>
+                <li><a href="#">Liên hệ</a></li>
+              </ul>
+            </li>
+            <li><a href="#!">Tin tức</a></li>
+            <div class="user-cart">
+              <div class="search-box">
+                <form action="" id="search-form">
+                  <input type="text" id="search-text" placeholder="Tìm kiếm...">
+                  <button type="submit" id="search-btn">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+              </div>
+              <div class="user-profile">
+                <i class="fas fa-user" id="user-btn"></i>
+                <div class="dropdown-menu user-dropdown">
+                  <ul>
+                    <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
+                    <li><a href="#"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="cart-icon">
+                <i class="fas fa-shopping-cart" id="cart-btn"></i>
+                <div class="cart-count">0</div>
+                <div class="dropdown-menu cart-dropdown">
+                  <p>Giỏ hàng của bạn trống.</p>
+                  <a href="#">Đăng nhập để xem sản phẩm</a>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="product-container">
+    <div class="product-images">
+      <div class="image-slider" id="imageSlider">
+        <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="slider-nav" id="sliderNav"></div>
+    </div>
+
+    <div class="product-info">
+        <h1 class="product-title">Túi thắt nơ</h1>
+      <div class="product-price"></div>
+
+      <div class="option-group">
+        <span class="option-title">PHÂN LOẠI</span>
+        <div class="color-options">
+          <div class="color-option active" data-color="1" data-image="images/P17.1.jpg" data-price="120000">Đỏ</div>
+          <div class="color-option" data-color="2" data-image="images/P17.2.jpg" data-price="120000">Vàng</div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+        <button class="wishlist-btn" id="wishlistBtn"><i class="fas fa-heart"></i></button>
+      </div>
+      <button class="buy-now">MUA NGAY</button>
+
+      <div class="product-description">
+        <div class="description-title">MÔ TẢ SẢN PHẨM</div>
+        <p>Túi thắt nơ với thiết kế tinh tế, điểm nhấn là chiếc nơ duyên dáng, phù hợp cho mọi phong cách.</p>
+        <p>Chất liệu bền đẹp, có hai màu đỏ và vàng, mang đến sự lựa chọn đa dạng cho người dùng </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-products">
+    <h2 class="section-title">CÓ THỂ BẠN QUAN TÂM</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-tag">New</div>
+        <div class="product-img">
+          <img src="images/P16.1.jpg" alt="Áo lưới">
+        </div>
+        <h4>Áo lưới </h4>
+        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-tag">New</div>
+        <div class="product-img">
+          <img src="images/P18.1.jpg" alt="Áo crotop hồng">
+        </div>
+        <h4>Áo crotop hồng</h4>
+        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-tag">New</div>
+        <div class="product-img">
+          <img src="images/P19.1.jpg" alt="Mũ len">
+        </div>
+        <h4>Mũ len</h4>
+        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-tag">New</div>
+        <div class="product-img">
+          <img src="images/P20.1.jpg" alt="Đầm caro đỏ xẻ tà">
+        </div>
+        <h4>Đầm caro đỏ xẻ tà</h4>
+        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      // Biến lưu số lượng sản phẩm trong giỏ hàng
+      let cartCount = 0;
+  
+      // Cập nhật số lượng giỏ hàng
+      function updateCartCount() {
+        $('.cart-count').text(cartCount);
+      }
+  
+      // Thêm sản phẩm vào giỏ hàng
+      $('.add-to-cart').click(function () {
+        cartCount++; // Tăng số lượng giỏ hàng lên 1
+        updateCartCount(); // Cập nhật lại giỏ hàng trên header
+      });
+  
+      // Chuyển đến trang cart.html khi bấm vào giỏ hàng
+      $('#cart-btn').click(function () {
+        window.location.href = 'cart.html'; // Chuyển đến trang cart.html
+      });
+    });
+    // Đảm bảo rằng DOM đã sẵn sàng
+  document.addEventListener('DOMContentLoaded', function () {
+      // Chuyển đến trang checkout khi bấm "Mua ngay"
+      document.querySelector('.buy-now').addEventListener('click', function () {
+          window.location.href = 'checkout.html'; // Đảm bảo đường dẫn đúng
+      });
+  });
+  
+  </script>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-cta">
+        <h2>THAM GIA LENLAB CLUB VÀ NHẬN GIẢM GIÁ 15%</h2>
+        <p>Đăng ký miễn phí và gia nhập cộng đồng ngay hôm nay!</p>
+        <form>
+          <input type="email" placeholder="Địa chỉ Email" required />
+          <button type="submit">Gửi</button>
+        </form>
+      </div>
+      <div class="footer-logo-top">LEN LAB</div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h3>Về chúng tôi</h3>
+        <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+      </div>
+      <div class="col">
+        <h3>Danh mục</h3>
+        <ul>
+          <li><a href="#">Nguyên phụ liệu</a></li>
+          <li><a href="#">Đồ trang trí</a></li>
+          <li><a href="#">Thời trang len</a></li>
+          <li><a href="#">Combo tự làm</a></li>
+          <li><a href="#">Sách hướng dẫn</a></li>
+          <li><a href="#">Thú bông len</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Công ty</h3>
+        <ul>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Blogs</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Theo dõi</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Header dropdown menu functionality
+      $('.dropdown > a').click(function (e) {
+        e.preventDefault();
+        var $dropdownMenu = $(this).next('.dropdown-menu');
+        $('.dropdown-menu').not($dropdownMenu).slideUp();
+        $dropdownMenu.stop(true, true).slideToggle();
+        $(this).find('.icon-menu').toggleClass('fa-chevron-down fa-chevron-right');
+      });
+
+      $(document).click(function (e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $('.dropdown-menu').slideUp();
+          $('.icon-menu').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+        }
+      });
+
+      $('#user-btn').click(function (e) {
+        e.stopPropagation();
+        $('.user-dropdown').stop(true, true).slideToggle();
+      });
+
+      $(document).click(function (e) {
+        if (!$(e.target).closest('.user-profile').length) {
+          $('.user-dropdown').slideUp();
+        }
+      });
+
+      // Product image slider functionality
+      const imageSlider = document.getElementById('imageSlider');
+      const sliderNav = document.getElementById('sliderNav');
+      const prevBtn = document.querySelector('.slider-arrow.prev');
+      const nextBtn = document.querySelector('.slider-arrow.next');
+      const colorOptions = document.querySelectorAll('.color-option');
+      const wishlistBtn = document.getElementById('wishlistBtn');
+      const priceElement = document.querySelector('.product-price');
+
+      const allImages = [
+        { src: 'images/P17.1.jpg', color: '1', basePrice: 120000 }, // Cổ tròn
+        { src: 'images/P17.2.jpg', color: '2', basePrice: 120000 }  // Thắt dây
+      ];
+
+      let currentIndex = 0;
+      let isWishlisted = false;
+      let imagesElements = [];
+
+      function createImageElements() {
+        allImages.forEach((imgObj, index) => {
+          const img = document.createElement('img');
+          img.src = imgObj.src;
+          img.className = 'main-image';
+          img.alt = 'Product image ' + (index + 1);
+          imageSlider.insertBefore(img, imageSlider.firstChild);
+          imagesElements.push(img);
+        });
+      }
+
+      function updateSlider() {
+        imagesElements.forEach(img => {
+          img.classList.remove('active');
+        });
+
+        imagesElements[currentIndex].classList.add('active');
+        updateThumbnails();
+        updateActiveColor(allImages[currentIndex].color);
+        priceElement.textContent = allImages[currentIndex].basePrice.toLocaleString('vi-VN') + 'đ';
+      }
+
+      function updateThumbnails() {
+        sliderNav.innerHTML = '';
+
+        allImages.forEach((imgObj, index) => {
+          const thumbnail = document.createElement('div');
+          thumbnail.className = 'slider-thumbnail' + (index === currentIndex ? ' active' : '');
+
+          const img = document.createElement('img');
+          img.src = imgObj.src;
+          img.alt = 'Thumbnail ' + (index + 1);
+
+          thumbnail.appendChild(img);
+          thumbnail.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+          });
+
+          sliderNav.appendChild(thumbnail);
+        });
+      }
+
+      function updateActiveColor(color) {
+        colorOptions.forEach(option => {
+          option.classList.toggle('active', option.getAttribute('data-color') === color);
+        });
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % allImages.length;
+        updateSlider();
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+        updateSlider();
+      }
+
+      createImageElements();
+      updateSlider();
+
+      prevBtn.addEventListener('click', showPrev);
+      nextBtn.addEventListener('click', showNext);
+
+      wishlistBtn.addEventListener('click', function () {
+        isWishlisted = !isWishlisted;
+        this.classList.toggle('active', isWishlisted);
+        alert(isWishlisted ? 'Đã thêm vào danh sách yêu thích' : 'Đã xóa khỏi danh sách yêu thích');
+      });
+
+      colorOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const selectedColor = option.getAttribute('data-color');
+          const index = allImages.findIndex(img => img.color === selectedColor);
+          if (index !== -1) {
+            currentIndex = index;
+            updateSlider();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

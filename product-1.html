@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang sản phẩm cao cấp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+  <div class="product-container">
+    <div class="product-images">
+      <div class="image-slider" id="imageSlider">
+        <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="slider-nav" id="sliderNav"></div>
+    </div>
+
+    <div class="product-info">
+      <h1 class="product-title" id="productTitle"></h1>
+      <div class="product-price" id="productPrice"></div>
+
+      <div class="option-group" id="colorOptionsGroup">
+        <span class="option-title">MÀU SẮC</span>
+        <div class="color-options" id="colorOptions"></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+        <button class="wishlist-btn" id="wishlistBtn"><i class="fas fa-heart"></i></button>
+      </div>
+      <button class="buy-now">MUA NGAY</button>
+
+      <div class="product-description" id="productDescription">
+        <div class="description-title">MÔ TẢ SẢN PHẨM</div>
+        <div id="descriptionContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/product-data.js"></script>
+  <script src="js/product-script.js"></script>
+</body>
+</html>

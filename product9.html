@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang sản phẩm cao cấp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="product.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="bg">
+      <div class="logo">LEN LAB</div>
+      <div class="menu">
+          <nav class="nav">
+              <ul>
+                  <li><a href="#!">Trang chủ</a></li>
+                  <li class="dropdown">
+                      <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Nguyên phụ liệu</a></li>
+                          <li><a href="#">Đồ trang trí</a></li>
+                          <li><a href="#">Thời trang len</a></li>
+                          <li><a href="#">Combo tự làm</a></li>
+                          <li><a href="#">Sách hướng dẫn</a></li>
+                          <li><a href="#">Thú bông len</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a href="#!">Giới thiệu <i class="fas fa-chevron-down icon-menu"></i></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Về chúng tôi </a></li>
+                          <li><a href="#">Liên hệ </a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#!">Tin tức</a></li>
+                  <div class="user-cart">
+                      <!-- Search -->
+                      <div class="search-box">
+                          <form action="" id="search-form">
+                              <input type="text" id="search-text" placeholder="Tìm kiếm...">
+                              <button type="submit" id="search-btn">
+                                  <i class="fas fa-search"></i>
+                              </button>
+                          </form>
+                      </div>
+                      <!-- User Profile -->
+                      <div class="user-profile">
+                          <i class="fas fa-user" id="user-btn"></i>
+                          <div class="dropdown-menu user-dropdown">
+                              <ul>
+                                  <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
+                                  <li><a href="#"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Cart -->
+                      <div class="cart-icon">
+                          <i class="fas fa-shopping-cart" id="cart-btn"></i>
+                          <div class="cart-count">0</div>
+                          <div class="dropdown-menu cart-dropdown">
+                              <p>Giỏ hàng của bạn trống.</p>
+                              <a href="#">Đăng nhập để xem sản phẩm</a>
+                          </div>
+                      </div>
+                  </div>
+              </ul>
+          </nav>
+      </div>
+      </div>
+</header>
+<script>
+  $(document).ready(function () {
+      // Mở/đóng menu khi click vào "Giới thiệu" và "Sản phẩm"
+      $('.dropdown > a').click(function (e) {
+          e.preventDefault();
+          var $dropdownMenu = $(this).next('.dropdown-menu');
+          
+          // Đóng tất cả các menu khác
+          $('.dropdown-menu').not($dropdownMenu).slideUp();
+          // Toggle menu hiện tại
+          $dropdownMenu.stop(true, true).slideToggle();
+  
+          // Toggle mũi tên chỉ hướng
+          $(this).find('.icon-menu').toggleClass('fa-chevron-down fa-chevron-right');
+      });
+  
+      // Đảm bảo rằng dropdown đóng lại khi click ra ngoài
+      $(document).click(function (e) {
+          if (!$(e.target).closest('.dropdown').length) {
+              $('.dropdown-menu').slideUp();
+              $('.icon-menu').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+          }
+      });
+  
+      // Toggle user profile dropdown
+      $('#user-btn').click(function (e) {
+          e.stopPropagation(); // Prevent closing the dropdown when clicking on the user profile button
+          $('.user-dropdown').stop(true, true).slideToggle();
+      });
+  
+      // Close dropdown when clicking outside
+      $(document).click(function (e) {
+          if (!$(e.target).closest('.user-profile').length) {
+              $('.user-dropdown').slideUp();
+          }
+      });
+  });
+  </script>
+<body>
+    <div class="product-container">
+      <div class="product-images">
+        <div class="image-slider" id="imageSlider">
+          <!-- Các hình ảnh sẽ được thêm vào đây bằng JavaScript -->
+          <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="slider-nav" id="sliderNav"></div>
+      </div>
+  
+      <div class="product-info">
+        <h1 class="product-title">Bộ 3 gấu bông</h1>
+        <div class="product-price"></div>
+  
+        <div class="option-group">
+          <span class="option-title">PHÂN LOẠI</span>
+          <div class="color-options">
+            <div class="color-option active" data-color="1" data-image="images/sản phẩm 2 .jpg" data-price="50000">Gấu trúc</div>
+            <div class="color-option" data-color="2" data-image="images/sản phẩm 2 .jpg" data-price="50000">Gấu nâu</div>
+            <div class="color-option" data-color="3" data-image="images/sản phẩm 2 .jpg" data-price="50000">Gấu trắng</div>
+            <div class="color-option combo" data-color="4" data-image="images/sản phẩm 2 .jpg" data-price="140000">Combo 3 gấu</div>
+          </div>
+        </div>
+  
+        <div class="action-buttons">
+          <button class="add-to-cart">THÊM VÀO GIỎ HÀNG</button>
+          <button class="wishlist-btn" id="wishlistBtn"><i class="fas fa-heart"></i></button>
+        </div>
+        <button class="buy-now">MUA NGAY</button>
+  
+        <div class="product-description">
+          <div class="description-title">MÔ TẢ SẢN PHẨM</div>
+          <p>Bộ sưu tập 3 chú gấu bông đáng yêu với các màu sắc khác nhau, hoàn hảo để làm quà tặng hoặc trang trí.</p>
+          <p>Chất liệu vải mềm mại, đường may tỉ mỉ, thiết kế dễ thương với giá thành hợp lý khi mua combo 3 gấu.</p>
+        </div>
+      </div>
+    </div>
+    <div class="related-products">
+      <h2 class="section-title">CÓ THỂ BẠN QUAN TÂM</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-tag">New</div>
+          <div class="product-img">
+            <img src="images/P1.1.webp" alt="Móc khóa mèo đội mũ cá taiyaki cute">
+          </div>
+          <h4>Móc khóa mèo đội mũ cá</h4>
+          <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-tag">New</div>
+          <div class="product-img">
+            <img src="images/P3.1.jpg" alt="Thỏ đội mũ">
+          </div>
+          <h4>Thỏ đội mũ dễ thương</h4>
+          <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-tag">New</div>
+          <div class="product-img">
+            <img src="images/P6.1.jpg" alt="Móc khóa gấu">
+          </div>
+          <h4>Móc khóa gấu</h4>
+          <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-tag">New</div>
+          <div class="product-img">
+            <img src="images/P7.2.jpg" alt="Móc khóa thỏ nón đỏ">
+          </div>
+          <h4>Móc khóa thỏ nón đỏ</h4>
+          <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        // Biến lưu số lượng sản phẩm trong giỏ hàng
+        let cartCount = 0;
+    
+        // Cập nhật số lượng giỏ hàng
+        function updateCartCount() {
+          $('.cart-count').text(cartCount);
+        }
+    
+        // Thêm sản phẩm vào giỏ hàng
+        $('.add-to-cart').click(function () {
+          cartCount++; // Tăng số lượng giỏ hàng lên 1
+          updateCartCount(); // Cập nhật lại giỏ hàng trên header
+        });
+    
+        // Chuyển đến trang cart.html khi bấm vào giỏ hàng
+        $('#cart-btn').click(function () {
+          window.location.href = 'cart.html'; // Chuyển đến trang cart.html
+        });
+      });
+      // Đảm bảo rằng DOM đã sẵn sàng
+    document.addEventListener('DOMContentLoaded', function () {
+        // Chuyển đến trang checkout khi bấm "Mua ngay"
+        document.querySelector('.buy-now').addEventListener('click', function () {
+            window.location.href = 'checkout.html'; // Đảm bảo đường dẫn đúng
+        });
+    });
+    
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const imageSlider = document.getElementById('imageSlider');
+        const sliderNav = document.getElementById('sliderNav');
+        const prevBtn = document.querySelector('.slider-arrow.prev');
+        const nextBtn = document.querySelector('.slider-arrow.next');
+        const colorOptions = document.querySelectorAll('.color-option');
+        const wishlistBtn = document.getElementById('wishlistBtn');
+        const priceElement = document.querySelector('.product-price');
+  
+        const allImages = [
+          { src: 'images/sản phẩm 2 .jpg', color: '1', basePrice: 50000 },  // Gấu trúc
+          { src: 'images/sản phẩm 2 .jpg', color: '2', basePrice: 50000 },  // Gấu nâu
+          { src: 'images/sản phẩm 2 .jpg', color: '3', basePrice: 50000 },  // Gấu trắng
+          { src: 'images/sản phẩm 2 .jpg', color: '4', basePrice: 140000 }  // Combo 3 gấu
+        ];
+      let currentIndex = 0;
+      let isWishlisted = false;
+      let imagesElements = [];
+
+      function createImageElements() {
+        allImages.forEach((imgObj, index) => {
+          const img = document.createElement('img');
+          img.src = imgObj.src;
+          img.className = 'main-image';
+          img.alt = 'Product image ' + (index + 1);
+          imageSlider.insertBefore(img, imageSlider.firstChild);
+          imagesElements.push(img);
+        });
+      }
+
+      function updateSlider() {
+        imagesElements.forEach(img => {
+          img.classList.remove('active');
+        });
+
+        imagesElements[currentIndex].classList.add('active');
+        updateThumbnails();
+        updateActiveColor(allImages[currentIndex].color);
+
+        // Cập nhật giá
+        priceElement.textContent = allImages[currentIndex].basePrice.toLocaleString('vi-VN') + 'đ';
+      }
+
+      function updateThumbnails() {
+        sliderNav.innerHTML = '';
+
+        allImages.forEach((imgObj, index) => {
+          const thumbnail = document.createElement('div');
+          thumbnail.className = 'slider-thumbnail' + (index === currentIndex ? ' active' : '');
+
+          const img = document.createElement('img');
+          img.src = imgObj.src;
+          img.alt = 'Thumbnail ' + (index + 1);
+
+          thumbnail.appendChild(img);
+          thumbnail.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+          });
+
+          sliderNav.appendChild(thumbnail);
+        });
+      }
+
+      function updateActiveColor(color) {
+        colorOptions.forEach(option => {
+          option.classList.toggle('active', option.getAttribute('data-color') === color);
+        });
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % allImages.length;
+        updateSlider();
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+        updateSlider();
+      }
+
+      createImageElements();
+      updateSlider();
+
+      prevBtn.addEventListener('click', showPrev);
+      nextBtn.addEventListener('click', showNext);
+
+      wishlistBtn.addEventListener('click', function () {
+        isWishlisted = !isWishlisted;
+        this.classList.toggle('active', isWishlisted);
+        alert(isWishlisted ? 'Đã thêm vào danh sách yêu thích' : 'Đã xóa khỏi danh sách yêu thích');
+      });
+
+      colorOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const selectedColor = option.getAttribute('data-color');
+          const index = allImages.findIndex(img => img.color === selectedColor);
+          if (index !== -1) {
+            currentIndex = index;
+            updateSlider();
+          }
+        });
+      });
+    });
+  </script>
+<footer class="footer-container">
+  <div class="footer">
+      <!-- PHẦN ĐẦU -->
+      <div class="footer-top">
+        <div class="footer-cta">
+          <h2>THAM GIA LENLAB CLUB VÀ NHẬN GIẢM GIÁ 15%</h2>
+          <p>Đăng ký miễn phí và gia nhập cộng đồng ngay hôm nay!</p>
+          <form>
+            <input type="email" placeholder="Địa chỉ Email" required />
+            <button type="submit">Gửi</button>
+          </form>
+        </div>
+        <div class="footer-logo-top">LEN LAB</div>
+      </div>
+  
+      <!-- NỘI DUNG CHÍNH -->
+      <div class="row">
+        <div class="col">
+          <h3>Về chúng tôi</h3>
+          <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+        </div>
+        <div class="col">
+          <h3>Danh mục</h3>
+          <ul>
+            <li><a href="#">Nguyên phụ liệu</a></li>
+            <li><a href="#">Đồ trang trí</a></li>
+            <li><a href="#">Thời trang len</a></li>
+            <li><a href="#">Combo tự làm</a></li>
+            <li><a href="#">Sách hướng dẫn</a></li>
+            <li><a href="#">Thú bông len</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Công ty</h3>
+          <ul>
+            <li><a href="#">Tin tức</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Theo dõi</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61575666167762&sk=about" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@lenlabshop" target="_blank">
+              <i class="fab fa-tiktok"></i>
+            </a>
+
+            <a href="https://www.instagram.com/lenlab.vn?igsh=NG5wOGQyNDZoN3No" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://www.youtube.com/@LenLabShop" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <hr>
+      <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
