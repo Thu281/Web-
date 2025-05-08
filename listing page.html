@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Danh sách sản phẩm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="listingpage.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div class="bg">
+      <div class="logo">LEN LAB</div>
+      <div class="menu">
+          <nav class="nav">
+              <ul>
+                  <li><a href="#!">Trang chủ</a></li>
+                  <li class="dropdown">
+                      <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Nguyên phụ liệu</a></li>
+                          <li><a href="#">Đồ trang trí</a></li>
+                          <li><a href="#">Thời trang len</a></li>
+                          <li><a href="#">Combo tự làm</a></li>
+                          <li><a href="#">Sách hướng dẫn</a></li>
+                          <li><a href="#">Thú bông len</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a href="#!">Giới thiệu <i class="fas fa-chevron-down icon-menu"></i></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Về chúng tôi </a></li>
+                          <li><a href="#">Liên hệ </a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#!">Tin tức</a></li>
+                  <div class="user-cart">
+                      <!-- Search -->
+                      <div class="search-box">
+                          <form action="" id="search-form">
+                              <input type="text" id="search-text" placeholder="Tìm kiếm...">
+                              <button type="submit" id="search-btn">
+                                  <i class="fas fa-search"></i>
+                              </button>
+                          </form>
+                      </div>
+                      <!-- User Profile -->
+                      <div class="user-profile">
+                          <i class="fas fa-user" id="user-btn"></i>
+                          <div class="dropdown-menu user-dropdown">
+                              <ul>
+                                  <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
+                                  <li><a href="#"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Cart -->
+                      <div class="cart-icon">
+                          <i class="fas fa-shopping-cart" id="cart-btn"></i>
+                          <div class="cart-count">0</div>
+                          <div class="dropdown-menu cart-dropdown">
+                              <p>Giỏ hàng của bạn trống.</p>
+                              <a href="#">Đăng nhập để xem sản phẩm</a>
+                          </div>
+                      </div>
+                  </div>
+              </ul>
+          </nav>
+      </div>
+      </div>
+</header>
+<script>
+  $(document).ready(function () {
+      // Mở/đóng menu khi click vào "Giới thiệu" và "Sản phẩm"
+      $('.dropdown > a').click(function (e) {
+          e.preventDefault();
+          var $dropdownMenu = $(this).next('.dropdown-menu');
+          
+          // Đóng tất cả các menu khác
+          $('.dropdown-menu').not($dropdownMenu).slideUp();
+          // Toggle menu hiện tại
+          $dropdownMenu.stop(true, true).slideToggle();
+  
+          // Toggle mũi tên chỉ hướng
+          $(this).find('.icon-menu').toggleClass('fa-chevron-down fa-chevron-right');
+      });
+  
+      // Đảm bảo rằng dropdown đóng lại khi click ra ngoài
+      $(document).click(function (e) {
+          if (!$(e.target).closest('.dropdown').length) {
+              $('.dropdown-menu').slideUp();
+              $('.icon-menu').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+          }
+      });
+  
+      // Toggle user profile dropdown
+      $('#user-btn').click(function (e) {
+          e.stopPropagation(); // Prevent closing the dropdown when clicking on the user profile button
+          $('.user-dropdown').stop(true, true).slideToggle();
+      });
+  
+      // Close dropdown when clicking outside
+      $(document).click(function (e) {
+          if (!$(e.target).closest('.user-profile').length) {
+              $('.user-dropdown').slideUp();
+          }
+      });
+  });
+  </script>
+<body>
+  <div id="saleoff" class="rounded-banner">
+    <div class="box-left">
+        <h1>
+            <span class="slide-in">SẢN PHẨM CHẤT LƯỢNG </span>
+            <span class="pulse">100%</span>
+        </h1>
+    </div>
+    <div class="box-right"></div>
+  </div>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Sản phẩm</h2>
+      <p>22 items</p>
+      <div class="filter-section">
+        <h4>DANH MỤC</h4>
+        <ul class="category-list">
+          <li><input type="checkbox" /> Nguyên phụ liệu</li>
+          <li><input type="checkbox" /> Đồ trang trí</li>
+          <li><input type="checkbox" /> Thời trang len</li>
+          <li><input type="checkbox" /> Combo tự làm</li>
+          <li><input type="checkbox" /> Sách hướng dẫn</li>
+          <li><input type="checkbox" /> Thú bông len</li>
+        </ul>
+        <h4>GIÁ</h4>
+        <div class="price-range-buttons">
+          <button data-price="low">0 - 99.999 VND</button>
+          <button data-price="high">100.000 - 500.000 VND</button>
+        </div>
+        <input type="range" min="0" max="1000000" value="500000" id="priceRange" />
+        <div class="price-labels">
+          <span>0 VND</span>
+          <span>1.000.000 VND</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="product-list">
+      <div class="sort-bar">
+        <select id="sortOptions" class="sort-options">
+          <option value="trending">Sắp xếp theo</option>
+          <option value="price-low">Giá: Thấp đến cao</option>
+          <option value="price-high">Giá: Cao đến thấp</option>
+          <option value="newest">Mới nhất</option>
+          <option value="popular">Bán chạy</option>
+        </select>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- Sản phẩm sẽ được thêm động ở đây -->
+      </div>
+
+      <div class="pagination">
+        <button id="prev">&lt; TRƯỚC</button>
+        <button class="page-btn active" data-page="1">1</button>
+        <button class="page-btn" data-page="2">2</button>
+        <button class="page-btn" data-page="3">3</button>
+        <button id="next">SAU &gt;</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const products = [
+      { id: 1, name: "Combo 10/15/20 cuộn len, gói nguyên liệu cơ bản", price: 45000, category: "Nguyên phụ liệu", new: true, image: "images/P2.1.webp"},
+      { id: 2, name: "Kim móc cao cấp nhẹ gọn cho người dùng", price: 9000, category: "Nguyên phụ liệu", new: true, image: "images/P5.1.webp" },
+      { id: 3, name: "Combo 10 Kim đánh đấu mũi len bằng nhựa nhiều sắc màu", price: 5000, category: "Nguyên phụ liệu", new: false, image: "images/P8.1.webp" },
+      { id: 4, name: "Kẽm Cắm Hoa Giấy, Hoa Nhựa Dài 60cm", price: 26000, category: "Nguyên phụ liệu", new: true, image: "images/P9.1.webp" },
+      { id: 5, name: "Móc khóa mèo đội mũ cá", price: 40000, category: "Thú bông len", new: false, image: "images/P1.1.webp" },
+      { id: 6, name: "Thỏ đội mũ", price: 90000, category: "Thú bông len", new: true, image: "images/P3.1.jpg" },
+      { id: 7, name: "Móc khóa gấu", price: 40000, category: "Thú bông len", new: false, image: "images/P6.1.jpg" },
+      { id: 8, name: "Móc khóa thỏ đội nón", price: 45000, category: "Thú bông len", new: false, image: "images/P7.1.jpg" },
+      { id: 9, name: "Bộ 3 gấu bông", price: 50000, category: "Thú bông len", new: true, image: "images/sản phẩm 2 .jpg" },
+      { id: 10, name: "Dây treo trang trí", price: 60000, category: "Đồ trang trí", new: true, image: "images/P11.1.jpg" },
+      { id: 11, name: "Kính trang trí hoa", price: 60000, category: "Đồ trang trí", new: false, image: "images/P12.1.jpg"},
+      { id: 12, name: "Cây trang trí nhà", price: 200000, category: "Đồ trang trí", new: false, image: "images/P14.1.jpg" },
+      { id: 13, name: "Dây treo bình", price: 30000, category: "Đồ trang trí", new: true, image: "images/P15.1.jpg" },
+      { id: 14, name: "Áo lưới", price: 130000, category: "Thời trang len", new: false, image: "images/P16.1.jpg" },
+      { id: 15, name: "Túi thắt nơ", price: 120000, category: "Thời trang len", new: false, image: "images/P17.1.jpg" },
+      { id: 16, name: "Áo croptop hồng", price: 150000, category: "Thời trang len", new: true, image: "images/P18.1.jpg" },
+      { id: 17, name: "Mũ len", price: 90000, category: "Thời trang len", new: true, image: "images/P19.1.jpg" },
+      { id: 18, name: "Đầm caro đỏ xẻ tà", price: 400000, category: "Thời trang len", new: false, image: "images/P20.1.jpg" },
+      { id: 19, name: "Sách hướng dẫn móc len", price: 290000, category: "Sách hướng dẫn", new: true, image: "images/P21.1.webp" },
+      { id: 20, name: "Bộ Móc Len Cho Người Mới Bắt Đầu Làm Móc Móc Khoá Cá Heo", price: 90000, category: "Combo tự làm", new: false, image: "images/P21.2.webp" }
+    ];
+
+    let activePriceFilter = null;
+    let currentPage = 1;
+    const itemsPerPage = 9; // 9 sản phẩm mỗi trang
+    let filteredProducts = [...products];
+
+    const productGrid = document.getElementById('productGrid');
+    const sortOptions = document.getElementById('sortOptions');
+    const priceRange = document.getElementById('priceRange');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const pageBtns = document.querySelectorAll('.page-btn');
+
+    function applyFiltersAndSort() {
+      filteredProducts = [...products];
+  
+      // Lọc theo giá
+      if (activePriceFilter === 'low') {
+        filteredProducts = filteredProducts.filter(p => p.price < 100000);
+      } else if (activePriceFilter === 'high') {
+        filteredProducts = filteredProducts.filter(p => p.price >= 100000 && p.price <= 500000);
+      }
+  
+      const maxPrice = parseInt(priceRange.value);
+      filteredProducts = filteredProducts.filter(p => p.price <= maxPrice);
+  
+      // Sắp xếp
+      switch (sortOptions.value) {
+        case 'price-low':
+          filteredProducts.sort((a, b) => a.price - b.price);
+          break;
+        case 'price-high':
+          filteredProducts.sort((a, b) => b.price - a.price);
+          break;
+        case 'newest':
+          filteredProducts.sort((a, b) => b.new - a.new);
+          break;
+        case 'popular':
+          filteredProducts.sort((a, b) => (a.id <= 5 ? 1 : 0) - (b.id <= 5 ? 1 : 0));
+          break;
+      }
+  
+      updatePagination();
+      displayCurrentPage();
+    }
+
+    function displayCurrentPage() {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+      
+      displayProducts(paginatedProducts);
+    }
+
+    function updatePagination() {
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+      
+      // Ẩn/tắt các nút phân trang không cần thiết
+      pageBtns.forEach((btn, index) => {
+        if (index < totalPages) {
+          btn.style.display = 'inline-block';
+          btn.classList.toggle('active', (index + 1) === currentPage);
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+
+      // Tắt nút Previous/Next khi cần
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+    }
+
+    function displayProducts(productsToDisplay) {
+      productGrid.innerHTML = '';
+      
+      if (productsToDisplay.length === 0) {
+        productGrid.innerHTML = '<p class="no-products">Không tìm thấy sản phẩm phù hợp</p>';
+        return;
+      }
+
+      productsToDisplay.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+
+        if (product.new) {
+          productCard.innerHTML += '<span class="label-new">New</span>';
+        }
+
+        // Sửa ở đây: Thay thế background ngẫu nhiên bằng hình ảnh thực
+        productCard.innerHTML += `
+          <img src="${product.image}" alt="${product.name}" class="product-img" onerror="this.src='images/default-product.jpg'">
+          <h4>${product.name}</h4>
+          <p class="product-price">${product.price.toLocaleString('vi-VN')} VND</p>
+          <p class="product-category">${product.category}</p>
+          <button class="view-product" data-id="${product.id}">Xem sản phẩm</button>
+        `;
+
+        productGrid.appendChild(productCard);
+      });
+
+      // Thêm sự kiện click cho nút xem sản phẩm
+      document.querySelectorAll('.view-product').forEach(button => {
+        button.addEventListener('click', function() {
+          const productId = this.getAttribute('data-id');
+          const product = products.find(p => p.id == productId);
+          if (product) {
+            localStorage.setItem('currentProduct', JSON.stringify(product));
+            window.location.href = `product${product.id}.html`;
+          }
+        });
+      });
+    }
+
+    // Sự kiện lọc khoảng giá
+    document.querySelectorAll('.price-range-buttons button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.price-range-buttons button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        button.classList.add('active');
+        
+        activePriceFilter = button.getAttribute('data-price');
+        currentPage = 1; // Reset về trang đầu khi lọc
+        applyFiltersAndSort();
+      });
+    });
+
+    // Sự kiện thanh trượt giá
+    priceRange.addEventListener('input', function() {
+      document.querySelector('.price-labels span:last-child').textContent = 
+        parseInt(this.value).toLocaleString('vi-VN') + ' VND';
+      currentPage = 1; // Reset về trang đầu khi lọc
+      applyFiltersAndSort();
+    });
+
+    // Sự kiện chọn sắp xếp
+    sortOptions.addEventListener('change', () => {
+      currentPage = 1; // Reset về trang đầu khi sắp xếp
+      applyFiltersAndSort();
+    });
+// Thêm biến để lưu danh mục đang chọn
+let selectedCategories = [];
+
+// Thêm sự kiện cho checkbox danh mục
+document.querySelectorAll('.category-list input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    const categoryText = this.parentElement.textContent.trim();
+    
+    if (this.checked) {
+      selectedCategories.push(categoryText);
+    } else {
+      selectedCategories = selectedCategories.filter(cat => cat !== categoryText);
+    }
+    
+    currentPage = 1; // Reset về trang đầu khi lọc
+    applyFiltersAndSort();
+  });
+});
+
+// Sửa hàm applyFiltersAndSort để bao gồm lọc danh mục
+function applyFiltersAndSort() {
+  filteredProducts = [...products];
+
+  // Lọc theo danh mục (nếu có danh mục được chọn)
+  if (selectedCategories.length > 0) {
+    filteredProducts = filteredProducts.filter(p => 
+      selectedCategories.includes(p.category)
+    );
+  }
+
+  // Lọc theo giá
+  if (activePriceFilter === 'low') {
+    filteredProducts = filteredProducts.filter(p => p.price < 100000);
+  } else if (activePriceFilter === 'high') {
+    filteredProducts = filteredProducts.filter(p => p.price >= 100000 && p.price <= 500000);
+  }
+
+  const maxPrice = parseInt(priceRange.value);
+  filteredProducts = filteredProducts.filter(p => p.price <= maxPrice);
+
+  // Sắp xếp
+  switch (sortOptions.value) {
+    case 'price-low':
+      filteredProducts.sort((a, b) => a.price - b.price);
+      break;
+    case 'price-high':
+      filteredProducts.sort((a, b) => b.price - a.price);
+      break;
+    case 'newest':
+      filteredProducts.sort((a, b) => b.new - a.new);
+      break;
+    case 'popular':
+      filteredProducts.sort((a, b) => (a.id <= 5 ? 1 : 0) - (b.id <= 5 ? 1 : 0));
+      break;
+  }
+
+  updatePagination();
+  displayCurrentPage();
+}
+    // Sự kiện phân trang
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayCurrentPage();
+        updatePagination();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayCurrentPage();
+        updatePagination();
+      }
+    });
+
+    pageBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentPage = parseInt(btn.dataset.page);
+        displayCurrentPage();
+        updatePagination();
+      });
+    });
+
+    // Khởi tạo ban đầu
+    document.addEventListener('DOMContentLoaded', () => {
+      applyFiltersAndSort();
+    });
+  </script>
+</body>
+</html>
+<footer class="footer-container">
+  <div class="footer">
+      <!-- PHẦN ĐẦU -->
+      <div class="footer-top">
+        <div class="footer-cta">
+          <h2>THAM GIA LENLAB CLUB VÀ NHẬN GIẢM GIÁ 15%</h2>
+          <p>Đăng ký miễn phí và gia nhập cộng đồng ngay hôm nay!</p>
+          <form>
+            <input type="email" placeholder="Địa chỉ Email" required />
+            <button type="submit">Gửi</button>
+          </form>
+        </div>
+        <div class="footer-logo-top">LEN LAB</div>
+      </div>
+  
+      <!-- NỘI DUNG CHÍNH -->
+      <div class="row">
+        <div class="col">
+          <h3>Về chúng tôi</h3>
+          <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+        </div>
+        <div class="col">
+          <h3>Danh mục</h3>
+          <ul>
+            <li><a href="#">Nguyên phụ liệu</a></li>
+            <li><a href="#">Đồ trang trí</a></li>
+            <li><a href="#">Thời trang len</a></li>
+            <li><a href="#">Combo tự làm</a></li>
+            <li><a href="#">Sách hướng dẫn</a></li>
+            <li><a href="#">Thú bông len</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Công ty</h3>
+          <ul>
+            <li><a href="#">Tin tức</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Theo dõi</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61575666167762&sk=about" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@lenlabshop" target="_blank">
+              <i class="fab fa-tiktok"></i>
+            </a>
+
+            <a href="https://www.instagram.com/lenlab.vn?igsh=NG5wOGQyNDZoN3No" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://www.youtube.com/@LenLabShop" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <hr>
+      <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
+  </div>
+</footer>
+</html>
