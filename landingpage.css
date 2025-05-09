@@ -12,15 +12,15 @@ body {
 header {
     width: 100%;
     background-color: #FBF4E4;
-    padding: 20px 0px;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Center header */
+    padding: 20px 0;
 }
 
 /* Background Container */
 .bg {
     width: 100%;
     max-width: 1500px;
-    margin: 0 auto;
     padding: 10px 30px;
     background-color: #F0C2AA;
     display: flex;
@@ -97,11 +97,17 @@ nav ul li a:hover {
 }
 
 /* User + Cart + Search */
-.user-cart {
+/*.user-cart {
     display: flex;
     align-items: center;
     gap: 20px;
     margin-left: 30px;
+}*/
+.user-cart {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 200px; /* Tăng giá trị này để đẩy sang phải */
 }
 
 /* Search */
@@ -157,6 +163,7 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
+/* Chỉnh màu ICON user và cart */
 .user-profile i, .cart-icon i {
     color: #AA401C;
     font-size: 24px;
@@ -214,6 +221,21 @@ nav ul li a:hover {
 .user-dropdown ul li:hover {
     background-color: #F0C2AA;
 }
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa màn hình */
+    padding: 20px;
+}
+.product-item {
+    width: 250px; /* Cố định chiều rộng */
+    text-align: center; /* Căn giữa nội dung bên trong */
+    margin: 10px;
+}
+
 /* Banner */
 #banner {
     width: 100%;
@@ -523,7 +545,7 @@ h2::after {
 }
 
 .review-item::before {
-    content: """;
+    content: "";
     position: absolute;
     top: -10px;
     left: -10px;
@@ -563,7 +585,7 @@ h2::after {
 }
 
 .review-content::before {
-    content: """;
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -626,7 +648,7 @@ h2::after {
 /* Responsive */
 @media (max-width: 768px) {
     .products-grid, .categories-grid, .reviews-grid {
-        grid-template-columns: repeat(2, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
