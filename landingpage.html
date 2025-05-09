@@ -9,9 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="landingpage.css">
 </head>
-<body>
-<header>
-    <div class="bg">
+<div class="bg">
         <div class="logo">LEN LAB</div>
         <div class="menu">
             <nav class="nav">
@@ -70,18 +68,6 @@
             </nav>
         </div>
         </div>
-        <div id="banner">
-            <div class="box-left">
-                <h2>
-                    <span>Len Lab</span>
-                    <br>
-                    <span>Cửa hàng đan móc thủ công</span>
-                </h2>
-                <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
-                <button id="buy-now">Mua ngay</button>
-            </div>
-            
-        </div>
     
 </header>
 
@@ -123,6 +109,23 @@ $(document).ready(function () {
     });
 });
 </script>
+<body>
+        <div id="banner">
+            <div class="box-left">
+                <h2>
+                    <span>Len Lab</span>
+                    <br>
+                    <span>Cửa hàng đan móc thủ công</span>
+                </h2>
+                <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+                <button id="buy-now">Mua ngay</button>
+            </div>
+            
+        </div>
+    
+</header>
+
+
 <section id="new-collection">
     <div class="container">
         <div class="section-header">
@@ -313,56 +316,70 @@ $('.category-item').click(function () {
         );
     });
 </script>
-<footer>
-    <!-- PHẦN ĐẦU -->
-    <div class="footer-top">
-      <div class="footer-cta">
-        <h2>THAM GIA LENLAB CLUB VÀ NHẬN GIẢM GIÁ 15%</h2>
-        <p>Đăng ký miễn phí và gia nhập cộng đồng ngay hôm nay!</p>
-        <form>
-          <input type="email" placeholder="Địa chỉ Email" required />
-          <button type="submit">Gửi</button>
-        </form>
-      </div>
-      <div class="footer-logo-top">LEN LAB</div>
-    </div>
-
-    <!-- NỘI DUNG CHÍNH -->
-    <div class="row">
-      <div class="col">
-        <h3>Về chúng tôi</h3>
-        <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
-      </div>
-      <div class="col">
-        <h3>Danh mục</h3>
-        <ul>
-          <li><a href="#">Nguyên phụ liệu</a></li>
-          <li><a href="#">Đồ trang trí</a></li>
-          <li><a href="#">Thời trang len</a></li>
-          <li><a href="#">Combo tự làm</a></li>
-          <li><a href="#">Sách hướng dẫn</a></li>
-          <li><a href="#">Thú bông len</a></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>Công ty</h3>
-        <ul>
-          <li><a href="#">Tin tức</a></li>
-          <li><a href="#">Liên hệ</a></li>
-          <li><a href="#">Blogs</a></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>Theo dõi</h3>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
+<footer class="footer-container">
+    <div class="footer">
+        <!-- PHẦN ĐẦU -->
+        <div class="footer-top">
+          <div class="footer-cta">
+            <h2>THAM GIA LENLAB CLUB VÀ NHẬN GIẢM GIÁ 15%</h2>
+            <p>Đăng ký miễn phí và gia nhập cộng đồng ngay hôm nay!</p>
+            <form>
+              <input type="email" placeholder="Địa chỉ Email" required />
+              <button type="submit">Gửi</button>
+            </form>
+          </div>
+          <div class="footer-logo-top">LEN LAB</div>
         </div>
-      </div>
-    </div>
+    
+        <!-- NỘI DUNG CHÍNH -->
+        <div class="row">
+          <div class="col">
+            <h3>Về chúng tôi</h3>
+            <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+          </div>
+          <div class="col">
+            <h3>Danh mục</h3>
+            <ul>
+              <li><a href="#">Nguyên phụ liệu</a></li>
+              <li><a href="#">Đồ trang trí</a></li>
+              <li><a href="#">Thời trang len</a></li>
+              <li><a href="#">Combo tự làm</a></li>
+              <li><a href="#">Sách hướng dẫn</a></li>
+              <li><a href="#">Thú bông len</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>Công ty</h3>
+            <ul>
+              <li><a href="#">Tin tức</a></li>
+              <li><a href="#">Liên hệ</a></li>
+              <li><a href="#">Blogs</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>Theo dõi</h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61575666167762&sk=about" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
 
-    <hr>
-    <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
-  </footer>
+              <a href="https://www.tiktok.com/@lenlabshop" target="_blank">
+                <i class="fab fa-tiktok"></i>
+              </a>
+
+              <a href="https://www.instagram.com/lenlab.vn?igsh=NG5wOGQyNDZoN3No" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+
+              <a href="https://www.youtube.com/@LenLabShop" target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <hr>
+        <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
+    </div>
+</footer>
+
