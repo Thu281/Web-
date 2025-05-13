@@ -10,64 +10,64 @@
   
 </head>
 <body>
-  <div class="bg">
-    <div class="logo">LEN LAB</div>
-    <div class="menu">
-        <nav class="nav">
-            <ul>
-                <li><a href="#!">Trang chủ</a></li>
-                <li class="dropdown">
-                    <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Nguyên phụ liệu</a></li>
-                        <li><a href="#">Đồ trang trí</a></li>
-                        <li><a href="#">Thời trang len</a></li>
-                        <li><a href="#">Combo tự làm</a></li>
-                        <li><a href="#">Sách hướng dẫn</a></li>
-                        <li><a href="#">Thú bông len</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#!">Giới thiệu <i class="fas fa-chevron-down icon-menu"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Về chúng tôi </a></li>
-                        <li><a href="#">Liên hệ </a></li>
-                    </ul>
-                </li>
-                <li><a href="#!">Tin tức</a></li>
-                <div class="user-cart">
-                    <!-- Search -->
-                    <div class="search-box">
-                        <form action="" id="search-form">
-                            <input type="text" id="search-text" placeholder="Tìm kiếm...">
-                            <button type="submit" id="search-btn">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <!-- User Profile -->
-                    <div class="user-profile">
-                        <i class="fas fa-user" id="user-btn"></i>
-                        <div class="dropdown-menu user-dropdown">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
-                            </ul>
+ <div class="bg"> 
+        <div class="logo">LEN LAB</div>
+        <div class="menu">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#!">Trang chủ</a></li>
+                    <li class="dropdown">
+                        <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="listing page.html">Nguyên phụ liệu</a></li>
+                            <li><a href="listing page.html">Đồ trang trí</a></li>
+                            <li><a href="listing page.html">Thời trang len</a></li>
+                            <li><a href="listing page.html">Combo tự làm</a></li>
+                            <li><a href="listing page.html">Sách hướng dẫn</a></li>
+                            <li><a href="listing page.html">Thú bông len</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#!">Giới thiệu <i class="fas fa-chevron-down icon-menu"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Về chúng tôi </a></li>
+                            <li><a href="#">Liên hệ </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Tin tức</a></li>
+                    <div class="user-cart">
+                        <!-- Search -->
+                        <div class="search-box">
+                            <form action="" id="search-form">
+                                <input type="text" id="search-text" placeholder="Tìm kiếm...">
+                                <button type="submit" id="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!-- User Profile -->
+                        <div class="user-profile" style="position: relative;">
+                            <i class="fas fa-user" id="user-btn"></i>
+                                <div class="dropdown-menu user-dropdown">
+                                  <ul>
+                                   <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
+                                   <li><a href="Login.html"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                                    </ul>
+                                </div>
+                        </div>
+                        <!-- Cart -->
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart" id="cart-btn"></i>
+                                <div class="cart-count">0</div>
+                                    <div class="dropdown-menu cart-dropdown">
+                                        <p>Giỏ hàng của bạn trống.</p>
+                                            <a href="#">Đăng nhập để xem sản phẩm</a>
+                                    </div>
                         </div>
                     </div>
-                    <!-- Cart -->
-                    <div class="cart-icon">
-                        <i class="fas fa-shopping-cart" id="cart-btn"></i>
-                        <div class="cart-count">0</div>
-                        <div class="dropdown-menu cart-dropdown">
-                            <p>Giỏ hàng của bạn trống.</p>
-                            <a href="#">Đăng nhập để xem sản phẩm</a>
-                        </div>
-                    </div>
-                </div>
-            </ul>
-        </nav>
-    </div>
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>
 <script>
@@ -107,6 +107,33 @@ $(document).ready(function () {
         }
     });
 });
+  $(document).ready(function () {
+    // Biến lưu số lượng sản phẩm trong giỏ hàng
+    let cartCount = 0;
+
+    // Cập nhật số lượng giỏ hàng
+    function updateCartCount() {
+      $('.cart-count').text(cartCount);
+    }
+
+    // Thêm sản phẩm vào giỏ hàng
+    $('.add-to-cart').click(function () {
+      cartCount++; // Tăng số lượng giỏ hàng lên 1
+      updateCartCount(); // Cập nhật lại giỏ hàng trên header
+    });
+
+    // Chuyển đến trang cart.html khi bấm vào giỏ hàng
+    $('#cart-btn').click(function () {
+      window.location.href = 'cart.html'; // Chuyển đến trang cart.html
+    });
+  });
+  // Đảm bảo rằng DOM đã sẵn sàng
+document.addEventListener('DOMContentLoaded', function () {
+    // Chuyển đến trang checkout khi bấm "Mua ngay"
+    document.querySelector('.buy-now').addEventListener('click', function () {
+        window.location.href = 'checkout.html'; // Đảm bảo đường dẫn đúng
+    });
+});
 </script>
   <div class="product-container">
     <div class="product-images">
@@ -125,9 +152,9 @@ $(document).ready(function () {
       <div class="option-group">
         <span class="option-title">Phân loại</span>
         <div class="color-options">
-          <div class="color-option active" data-color="white-brown" data-image="images/P2.1.webp" data-price="45000">Combo 10 cuộn len 25gram</div>
-          <div class="color-option" data-color="white-yellow" data-image="images/P2.3.webp" data-price="100000">Combo 15 cuộn len 25gram</div>
-          <div class="color-option" data-color="yellow" data-image="images/P2.4.webp" data-price="130000">Combo 20 cuộn len 25gram</div>
+          <div class="color-option active" data-color="1" data-image="images/P2.1.webp" data-price="45000">Combo 10 cuộn len 25gram</div>
+          <div class="color-option" data-color="2" data-image="images/P2.3.webp" data-price="100000">Combo 15 cuộn len 25gram</div>
+          <div class="color-option" data-color="3" data-image="images/P2.4.webp" data-price="130000">Combo 20 cuộn len 25gram</div>
         </div>
       </div>
 
@@ -156,7 +183,7 @@ $(document).ready(function () {
           <img src="images\P5.1.webp" alt="Kim móc cao cấp nhẹ gọn cho người dùng">
         </div>
         <h4>Kim móc cao cấp nhẹ gọn cho người dùng</h4>
-        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        <a href="product2.html" class="view-product-btn">XEM SẢN PHẨM</a>
       </div>
       
       <div class="product-card">
@@ -165,7 +192,7 @@ $(document).ready(function () {
           <img src="images/P8.1.webp" alt="Combo 10 Kim đánh đấu mũi len bằng nhựa nhiều sắc màu">
         </div>
         <h4>Combo 10 Kim đánh đấu mũi len bằng nhựa nhiều sắc màu</h4>
-        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        <a href="product3.html" class="view-product-btn">XEM SẢN PHẨM</a>
       </div>
       
       <div class="product-card">
@@ -174,7 +201,7 @@ $(document).ready(function () {
           <img src="images/P9.1.webp" alt="Kẽm Cắm Hoa Giấy, Hoa Nhựa Dài 60cm - Combo 10 Cành">
         </div>
         <h4>Kẽm Cắm Hoa Giấy, Hoa Nhựa Dài 60cm - Combo 10 Cành</h4>
-        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        <a href="product4.html" class="view-product-btn">XEM SẢN PHẨM</a>
       </div>
       
       <div class="product-card">
@@ -183,7 +210,7 @@ $(document).ready(function () {
           <img src="images\P10.1.webp" alt="Bộ kim khâu 3 kích thước  kim loại cao cấpn">
         </div>
         <h4>Bộ kim khâu 3 kích thước kim loại cao cấp</h4>
-        <button class="add-to-cart-btn">THÊM VÀO GIỎ</button>
+        <a href="product21.html" class="view-product-btn">XEM SẢN PHẨM</a>
       </div>
     </div>
   </div>
@@ -229,9 +256,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const priceElement = document.querySelector('.product-price');
 
       const allImages = [
-        { src: 'images/P2.1.webp', color: 'white-brown', basePrice: 70000 },
-        { src: 'images/P2.3.webp', color: 'white-yellow', basePrice: 100000 },
-        { src: 'images/P2.4.webp', color: 'yellow', basePrice: 130000 }
+        { src: 'images/P2.1.webp', color: '1', basePrice: 70000 },
+        { src: 'images/P2.3.webp', color: '2', basePrice: 100000 },
+        { src: 'images/P2.4.webp', color: '3', basePrice: 130000 }
       ];
 
       let currentIndex = 0;
