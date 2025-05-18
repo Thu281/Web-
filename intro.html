@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LenLab - Cửa hàng len handmade</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap">
+  <link rel ="stylesheet" href="intro.css">
+</head>
+
+<body>
+
+  <!-- Phần "Về chúng tôi" được đưa lên đầu -->
+  <section class="about">
+    <h2>Về LenLab</h2>
+    <div class="about-content">
+      <p><strong>Câu chuyện thành lập:</strong> LenLab được tạo ra từ niềm đam mê với thủ công mỹ nghệ và tình yêu dành cho những sợi len nhỏ bé. Bắt đầu từ một góc nhỏ trong phòng trọ sinh viên, chúng tôi từng bước mở rộng và lan tỏa giá trị "móc từng mũi - gửi từng thương".</p>
+      <p><strong>Mô hình kinh doanh:</strong> Chúng tôi kinh doanh theo hình thức thủ công - đặt hàng theo yêu cầu, đồng thời cũng có các mẫu thiết kế sẵn giới hạn số lượng. Từng sản phẩm đều được làm bằng tay với sự chăm chút tỉ mỉ.</p>
+      <p><strong>Giá trị cốt lõi:</strong> Thủ công - Chân thành - Sáng tạo. LenLab tin rằng những món quà nhỏ xinh từ len có thể mang đến niềm vui và sự kết nối.</p>
+    </div>
+  </section>
+
+  <!-- Phần sản phẩm với 4 ô và nút xem chi tiết -->
+  <section class="products">
+    <h2>Sản phẩm nổi bật<br><span>Khám phá bộ sưu tập của chúng tôi</span></h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="images/P3.1.jpg" alt="Thỏ đội mũ">
+        <h3>Thỏ đội mũ</h3>
+        <p class="price-range">90.000đ</p>
+        <a href="product6.html" class="view-btn">Xem sản phẩm</a>
+      </div>
+      <div class="product">
+        <img src="images/P12.1.jpg" alt="Kính trang trí hoa">
+        <h3>Kính trang trí hoa</h3>
+        <p class="price-range">60.000đ</p>
+        <a href="product11.html" class="view-btn">Xem sản phẩm</a>
+      </div>
+      <div class="product">
+        <img src="images/P16.1.jpg" alt="Áo lưới">
+        <h3>Áo lưới</h3>
+        <p class="price-range">130.000đ – 150.000đ</p>
+        <a href="product14.html" class="view-btn">Xem sản phẩm</a>
+      </div>
+      <div class="product">
+        <img src="images/P20.1.jpg" alt="Đầm caro đỏ xẻ tà">
+        <h3>Áo len</h3>
+        <p class="price-range">400.000đ</p>
+        <a href="product18.html" class="view-btn">Xem sản phẩm</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="care">
+    <div class="text">
+      <h2>Chăm chút từng sản phẩm<br><span>với sự tỉ mỉ và yêu thương</span></h2>
+      <p>Chúng tôi không chỉ bán sản phẩm, mà gửi gắm tình cảm vào từng mũi len. Từng món quà là một câu chuyện nhỏ do chính tay chúng tôi tạo nên.</p>
+    </div>
+    <img src="images/P14.1.jpg" alt="Sản phẩm len LenLab">
+  </section>
+
+  <script>
+    // Xử lý khi click vào nút xem sản phẩm
+    document.querySelectorAll('.view-btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Trong thực tế, bạn sẽ chuyển hướng đến trang chi tiết sản phẩm
+        // Đây chỉ là ví dụ minh họa
+        const productId = this.getAttribute('href').split('=')[1];
+        console.log('Xem chi tiết sản phẩm ID:', productId);
+        // window.location.href = `product-detail.html?id=${productId}`;
+      });
+    });
+  </script>
+  <footer class="footer-container">
+    <div class="footer">
+        <!-- PHẦN ĐẦU -->
+        <div class="footer-top">
+          <div class="footer-cta">
+            <h2>THAM GIA LENLAB CLUB VÀ NHẬN GIẢM GIÁ 15%</h2>
+            <p>Đăng ký miễn phí và gia nhập cộng đồng ngay hôm nay!</p>
+            <form>
+              <input type="email" placeholder="Địa chỉ Email" required />
+              <button type="submit">Gửi</button>
+            </form>
+          </div>
+          <div class="footer-logo-top">LEN LAB</div>
+        </div>
+    
+        <!-- NỘI DUNG CHÍNH -->
+        <div class="row">
+          <div class="col">
+            <h3>Về chúng tôi</h3>
+            <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+          </div>
+          <div class="col">
+            <h3>Danh mục</h3>
+            <ul>
+              <li><a href="#">Nguyên phụ liệu</a></li>
+              <li><a href="#">Đồ trang trí</a></li>
+              <li><a href="#">Thời trang len</a></li>
+              <li><a href="#">Combo tự làm</a></li>
+              <li><a href="#">Sách hướng dẫn</a></li>
+              <li><a href="#">Thú bông len</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>Công ty</h3>
+            <ul>
+              <li><a href="#">Tin tức</a></li>
+              <li><a href="#">Liên hệ</a></li>
+              <li><a href="#">Blogs</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>Theo dõi</h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61575666167762&sk=about" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+
+              <a href="https://www.tiktok.com/@lenlabshop" target="_blank">
+                <i class="fab fa-tiktok"></i>
+              </a>
+
+              <a href="https://www.instagram.com/lenlab.vn?igsh=NG5wOGQyNDZoN3No" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+
+              <a href="https://www.youtube.com/@LenLabShop" target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <hr>
+        <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
