@@ -1,16 +1,74 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LenLab - Cửa hàng len handmade</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap">
-  <link rel ="stylesheet" href="intro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEN LAB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel ="stylesheet" href ="intro.css">
 </head>
-
 <body>
+<header>
+  <div class="bg">
+    <div class="logo">LEN LAB</div>
+    <nav class="nav menu">
+      <ul>
+        <li><a href="#!">Trang chủ</a></li>
+        <li class="dropdown">
+          <a href="#!">Sản phẩm <i class="fas fa-chevron-down icon-menu"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="listing page.html">Nguyên phụ liệu</a></li>
+            <li><a href="listing page.html">Đồ trang trí</a></li>
+            <li><a href="listing page.html">Thời trang len</a></li>
+            <li><a href="listing page.html">Combo tự làm</a></li>
+            <li><a href="listing page.html">Sách hướng dẫn</a></li>
+            <li><a href="listing page.html">Thú bông len</a></li>
+          </ul>
+        </li>
+        <li><a href="intro.html">Giới thiệu</a></li>
+        <li><a href="news.html">Tin tức</a></li>
+      </ul>
+    </nav>
 
-  <!-- Phần "Về chúng tôi" được đưa lên đầu -->
+    <div class="user-cart">
+      <!-- Search -->
+      <div class="search-box">
+        <form action="" id="search-form">
+          <input type="text" id="search-text" placeholder="Tìm kiếm...">
+          <button type="submit" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- User -->
+      <div class="user-profile">
+        <i class="fas fa-user" id="user-btn"></i>
+        <div class="dropdown-menu user-dropdown">
+          <ul>
+            <li><a href="#"><i class="fas fa-user-cog"></i> Tài khoản</a></li>
+            <li><a href="Login.html"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Cart -->
+      <div class="cart-icon">
+        <i class="fas fa-shopping-cart" id="cart-btn"></i>
+        <div class="cart-count">0</div>
+        <div class="dropdown-menu cart-dropdown">
+          <p>Giỏ hàng của bạn trống.</p>
+          <a href="#">Đăng nhập để xem sản phẩm</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Phần "Về chúng tôi" -->
   <section class="about">
     <h2>Về LenLab</h2>
     <div class="about-content">
@@ -71,7 +129,9 @@
       });
     });
   </script>
-  <footer class="footer-container">
+</main>
+
+<footer class="footer-container">
     <div class="footer">
         <!-- PHẦN ĐẦU -->
         <div class="footer-top">
@@ -91,24 +151,27 @@
           <div class="col">
             <h3>Về chúng tôi</h3>
             <p>Chúng tôi cung cấp sản phẩm len chất lượng cao, mềm mại và bền vững, mang lại sự ấm áp và an toàn cho người sử dụng.</p>
+            <div class="about-us">
+                <p><i class="fas fa-map-marker-alt"></i> Hàn Thuyên, khu phố 6 P, Thủ Đức, Hồ Chí Minh</p>
+                <p><i class="fas fa-envelope"></i> lenlab.vn@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 098 1234 5678</p>
+            </div>
           </div>
           <div class="col">
             <h3>Danh mục</h3>
             <ul>
-              <li><a href="#">Nguyên phụ liệu</a></li>
-              <li><a href="#">Đồ trang trí</a></li>
-              <li><a href="#">Thời trang len</a></li>
-              <li><a href="#">Combo tự làm</a></li>
-              <li><a href="#">Sách hướng dẫn</a></li>
-              <li><a href="#">Thú bông len</a></li>
+              <li><a href="listing page.html">Nguyên phụ liệu</a></li>
+              <li><a href="listing page.html">Đồ trang trí</a></li>
+              <li><a href="listing page.html">Thời trang len</a></li>
+              <li><a href="listing page.html">Combo tự làm</a></li>
+              <li><a href="listing page.html">Sách hướng dẫn</a></li>
+              <li><a href="listing page.html">Thú bông len</a></li>
             </ul>
           </div>
           <div class="col">
-            <h3>Công ty</h3>
+            <h3>Chính sách</h3>
             <ul>
-              <li><a href="#">Tin tức</a></li>
-              <li><a href="#">Liên hệ</a></li>
-              <li><a href="#">Blogs</a></li>
+              <li><a href="policy.htmhtm">Chính sách mua hàng</a></li>
             </ul>
           </div>
           <div class="col">
@@ -137,5 +200,68 @@
         <p class="copyright">© 2025 LEN LAB. All rights reserved.</p>
     </div>
 </footer>
+
+<script>
+    $(document).ready(function () {
+    // Chỉ áp dụng dropdown cho mục Sản phẩm
+    $('.dropdown:first > a').click(function (e) {
+        e.preventDefault();
+        var $dropdownMenu = $(this).next('.dropdown-menu');
+        
+        $('.dropdown-menu').not($dropdownMenu).slideUp();
+        $dropdownMenu.stop(true, true).slideToggle();
+        $(this).find('.icon-menu').toggleClass('fa-chevron-down fa-chevron-right');
+    });
+
+    // Đảm bảo rằng dropdown đóng lại khi click ra ngoài
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').slideUp();
+            $('.icon-menu').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+        }
+    });
+
+    // Toggle user profile dropdown
+    $('#user-btn').click(function (e) {
+        e.stopPropagation(); // Prevent closing the dropdown when clicking on the user profile button
+        $('.user-dropdown').stop(true, true).slideToggle();
+    });
+
+    // Close dropdown when clicking outside
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.user-profile').length) {
+            $('.user-dropdown').slideUp();
+        }
+    });
+});
+  $(document).ready(function () {
+    // Biến lưu số lượng sản phẩm trong giỏ hàng
+    let cartCount = 0;
+
+    // Cập nhật số lượng giỏ hàng
+    function updateCartCount() {
+      $('.cart-count').text(cartCount);
+    }
+
+    // Thêm sản phẩm vào giỏ hàng
+    $('.add-to-cart').click(function () {
+      cartCount++; // Tăng số lượng giỏ hàng lên 1
+      updateCartCount(); // Cập nhật lại giỏ hàng trên header
+    });
+
+    // Chuyển đến trang cart.html khi bấm vào giỏ hàng
+    $('#cart-btn').click(function () {
+      window.location.href = 'cart.html'; // Chuyển đến trang cart.html
+    });
+  });
+  // Đảm bảo rằng DOM đã sẵn sàng
+document.addEventListener('DOMContentLoaded', function () {
+    // Chuyển đến trang checkout khi bấm "Mua ngay"
+    document.querySelector('.buy-now').addEventListener('click', function () {
+        window.location.href = 'checkout.html'; // Đảm bảo đường dẫn đúng
+    });
+
+});
+</script>
 </body>
 </html>
