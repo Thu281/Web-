@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>ORDER DETAIL</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Order_detail.css" />
+    <!-- Sửa từ layout_checkout.css -->
+    <link rel="stylesheet" href="../HEADER-FOOTER/Footer.css" />
+    <!-- Sửa từ layout_footer.css -->
+    <link rel="stylesheet" href="../HEADER-FOOTER/Header.css" />
+    <!-- Thêm Header.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+</head>
+    <div class="container-fluid cart-container">
+        <div id="header-placeholder"></div>
+        <div class="order-header">
+            <h2>Thông tin đơn hàng</h2>
+            <p class="confirmation-message">Hãy kiểm tra thật kỹ thông tin trước khi đặt hàng bạn nhé!</p>
+            <div class="order-id">Mã đơn hàng<!--Mã đơn hàng sẽ tạo tự động theo thứ tự--></div>
+        </div>
+
+        <!--4 cái khung-->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+            <!-- Cột trái: Sản phẩm + Tóm tắt đơn hàng -->
+            <div style="display: flex; flex-direction: column; gap: 24px; width: 60%;">
+                <!-- Sản phẩm -->
+                <div class="order-summary" style="border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 16px; background-color: #F5D28E;" id="order-products">
+                <!-- Sản phẩm sẽ được render ở đây bằng JS -->
+                </div>
+
+                <!-- Tóm tắt đơn hàng -->
+                <div class="order-summary" style="border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 16px; background-color: #F5D28E;">
+                    <!-- Tiêu đề + Nút toggle -->
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="section-title" style="font-weight: 700; font-size: 18px;">Tóm tắt đơn hàng</div>
+                        <!-- Nút toggle -->
+                        <button id="toggle-btn" style="background-color: #fff; border: 1px solid #ccc; border-radius: 50%; padding: 6px 7px; cursor: pointer; font-size: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: all 0.3s;">
+                            <i id="toggle-icon" class="fas fa-chevron-down" style="transition: transform 0.3s;"></i>
+                        </button>
+                    </div>
+                    <!-- Nội dung chi tiết -->
+                    <div id="summary-details" style="margin-top: 12px; display: none;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Tạm tính</span><span>0đ</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Phí vận chuyển</span><span>0đ</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                            <span>Giảm giá</span><span>0đ</span>
+                        </div>
+                        <!-- Đường kẻ dưới nằm trong khung -->
+                        <div style="border-bottom: 1px solid #eee; margin-top: 15px;"></div><br>
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 20px;">
+                            <span>Thành tiền</span><span>0đ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cột phải: Thông tin khách hàng + Địa chỉ nhân hàng hàng -->
+            <div style="width: 40%; display: flex; flex-direction: column; gap: 24px;">
+                <!-- Thông tin khách hàng -->
+                <div class="customer-info" style="border: 1px solid #ddd; border-radius: 10px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background-color: #fff; margin-bottom: 2px;">
+                    <div class="section-title" style="font-weight: 700; font-size: 18px;">
+                        Thông tin khách hàng
+                    </div>
+                    <div class="address-content" style="padding-left: 4px;">
+                        <p style="margin: 0; margin-top: 8px;">
+                            <i class="fas fa-user" style="color:#555; margin-right:6px;"></i>
+                        </p>
+                        <p style="margin: 0; margin-top: 8px;">
+                            <i class="fas fa-envelope" style="color:#555; margin-right:6px;"></i>
+                        </p>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- Địa chỉ nhận hàng -->
+                <div class="shipping-info" style="border: 1px solid #ddd; border-radius: 10px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background-color: #fff; margin-bottom: 2px;">
+                <div class="section-title" style="font-weight: 700; font-size: 18px;">Địa chỉ nhận hàng</div>
+                <div class="address-content" style="padding-left: 4px;">
+                    <p><i class="fas fa-user"></i></p>
+                    <p><i class="fas fa-phone"></i></p>
+                    <p><i class="fas fa-envelope"></i></p>
+                    <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <!-- Các <p> sẽ được JS cập nhật -->
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    </div>
+                </div>
+                </div>
+
+
+                <!-- Hình thức thanh toán -->
+                <div style="border: 1px solid #ddd; border-radius: 10px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); background-color: #fff; margin-bottom: 50px;">
+                    <div class="section-title" style="font-weight: 700; font-size: 18px;">
+                        Hình thức thanh toán
+                    </div>
+                    <!-- Lựa chọn phương thức thanh toán -->
+                    <div style="margin-top: 16px;">
+                        <label style="display: block; margin-bottom: 8px;">
+                            <input type="radio" name="payment-method" value="cod" >
+                            Thanh toán khi nhận hàng (COD)
+                        </label>
+                        <label style="display: block;">
+                            <input type="radio" name="payment-method" value="bank_transfer">
+                            Chuyển khoản ngân hàng
+                        </label>
+                    </div>
+                    <p id="terms-text" style="font-size: 14px; color: #666; margin-top: 16px;">
+                        Bằng cách hoàn tất thanh toán, bạn đã đồng ý với các điều khoản và 
+                        <a href="news.html" target="_blank" style="color: #007bff; text-decoration: underline;">
+                            chính sách mua hàng
+                        </a>
+                        của chúng tôi.
+                    </p>
+                    <!-- Mã QR chuyển khoản -->
+                    <div id="bank-transfer-qr" style="display: none; margin-top: 20px; text-align: center;">
+                        <p style="margin-top: 8px; font-size: 14px;">Quét mã QR để chuyển khoản</p>
+                        <img src="QR nhận tiền.jpg" alt="Mã QR chuyển khoản" style="max-width: 300px; border: 1px solid #ddd; border-radius: 8px;">
+                       <p style="margin-top: 8px; margin-bottom: 2px; font-size: 14px;">
+                            Ngân hàng: <span style="font-weight:700; color: #0606c9;">Vietcombank</span>
+                        </p>
+                        <p style="margin-top: 2px; margin-bottom: 2px; font-size: 14px;">
+                            Số tài khoản: <span style="font-weight:700; color: #0606c9;">1040614582</span>
+                        </p>
+                        <p style="margin-top: 2px; margin-bottom: 2px; font-size: 14px; ">
+                            Chủ tài khoản: <span style="font-weight:700; color: #0606c9;">NGUYEN THANH LONG</span>
+                        </p>
+                        <p style="margin-top: 2px; margin-bottom: 2px; font-size: 14px;">
+                            <b>Số tiền thanh toán: </b> <span id="payment-amount" style="font-weight:700; color: red;">AAA</span>
+                        </p>
+                        <p style="margin-top: 2px; margin-bottom: 2px; font-size: 14px;">
+                            <b>Nội dung chuyển khoản: </b> <span id="payment-content" style="font-weight:700; color: red;">BBBB</span>
+                        </p>    
+                    </div>
+                    <!-- Nút hoàn tất đơn hàng -->
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button id="complete-order-btn" style="display: none; padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                            Hoàn tất đặt hàng
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Popup thành công (dùng chung cho cả COD và chuyển khoản) -->
+    <div id="success-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); justify-content: center; align-items: center; z-index: 1000;">
+        <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: center;">
+            <h3 style="margin-bottom: 10px;">🎉 Đặt hàng thành công!</h3>
+            <p>Cảm ơn bạn đã mua hàng.</p>
+            <p>Tình trạng đơn hàng của bạn sẽ được chúng tôi thông báo qua email!</p>
+            <button id="close-success-popup" style="margin-top: 16px; padding: 6px 18px; background: #dc3545; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Quay về trang chủ</button>
+        </div>
+    </div>
+    
+    
+    
+    <script>
+        // Hàm định dạng tiền tệ
+  function formatPrice(amount) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "đ";
+  }
+
+  // Hàm định dạng ngày
+  function formatDate(dateString) {
+    if (!dateString) return "∞";
+    const d = new Date(dateString);
+    return d.toLocaleDateString("vi-VN");
+  }
+
+    // Lấy dữ liệu và render sản phẩm
+    $(document).ready(function () {
+  $.get("../CHECKOUT/Order_detail.php", function (res) {
+    if (res.success && res.order) {
+      // Hiển thị mã đơn hàng tạm thời
+      $(".order-id").text("Mã đơn hàng: " + (res.order.order_id || "Đang xử lý"));
+   
+      // Hiển thị thông tin khách hàng
+  if (res.user) {
+    $(".customer-info .fa-user").parent().html('<i class="fas fa-user" style="color:#555; margin-right:6px;"></i> ' + (res.user.full_name || ""));
+    $(".customer-info .fa-envelope").parent().html('<i class="fas fa-envelope" style="color:#555; margin-right:6px;"></i> ' + (res.user.email || ""));
+  }
+
+  // Hiển thị địa chỉ nhận hàng
+      $(".shipping-info .fa-user").parent().html('<i class="fas fa-user" style="color:#555; margin-right:6px;"></i> Người nhận: ' + (res.order.full_name || ""));
+      $(".shipping-info .fa-phone").parent().html('<i class="fas fa-phone" style="color:#555; margin-right:6px;"></i> ' + (res.order.phone || ""));
+      $(".shipping-info .fa-envelope").parent().html('<i class="fas fa-envelope" style="color:#555; margin-right:6px;"></i> ' + (res.order.email || ""));
+      let addressContent = `
+        <i class="fas fa-map-marker-alt" style="color: #555; margin-right: 8px;"></i> Địa chỉ chi tiết
+        <p style="margin: 4px 0 0 35px;">${res.order.specific_address || ""}</p>
+        <p style="margin: 4px 0 0 35px;">Quận/Huyện: ${res.order.district || ""}</p>
+        <p style="margin: 4px 0 0 35px;">Tỉnh/Thành phố: ${res.order.province || ""}</p>
+      `;
+      $(".shipping-info .fa-map-marker-alt").parent().html(addressContent);
+  
+      // Render sản phẩm
+      let productsHtml = `
+        <div class="section-title" style="font-weight:700;font-size:18px;">Chi tiết đơn hàng</div>
+        <div>
+      `;
+      res.order.cart_items.forEach(function(item) {
+        productsHtml += `
+          <div class="row align-items-center mb-3 py-3 px-2" style="background: #F5D28E; border-radius: 10px;">
+            <div class="col-md-3 col-4">
+              <img src="${item.image || 'default.jpg'}" alt="${item.product_name}" class="img-fluid rounded" style="max-width: 100px; max-height: 100px; object-fit: cover;">
+            </div>
+            <div class="col-md-6 col-8">
+              <div class="fw-bold" style="font-size: 16px;">${item.product_name || ""}</div>
+              <div class="text-muted" style="font-size: 14px;">${item.category_name || ""}</div>
+              <div style="font-size: 14px;">
+                <span>Màu sắc: ${item.color || ""}</span> |
+                <span>Kích thước: ${item.size || ""}</span>
+              </div>
+              <div style="font-size: 14px;">Số lượng: <span class="fw-bold">${item.quantity || 1}</span></div>
+            </div>
+            <div class="col-md-3 col-12 text-end" style="font-size: 18px; font-weight: 600; color: #222;">
+              ${formatPrice(item.price * item.quantity)}
+            </div>
+          </div>
+        `;
+      });
+      productsHtml += `</div>`;
+      $("#order-products").html(productsHtml);
+
+    // Nếu nhận tại cửa hàng thì phí vận chuyển = 0
+let shippingFee = res.order.shipping_fee;
+if (res.order.shipping_method === "store") {
+    shippingFee = 0;
+}
+let finalTotal = res.order.total_amount + shippingFee - (res.order.discount_amount || 0);
+
+$("#summary-details").html(`
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span>Giá sản phẩm</span><span>${formatPrice(res.order.total_amount)}</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span>Phí vận chuyển</span><span>${formatPrice(shippingFee)}</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span>Phương thức giao hàng</span><span>${res.order.shipping_method === "store" ? "Nhận tại cửa hàng" : "Giao hàng tiêu chuẩn"}</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span>Giảm giá</span><span>${formatPrice(res.order.discount_amount || 0)}</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+        <span>Ghi chú</span><span>${res.order.note && res.order.note.trim() !== "" ? res.order.note : "-"}</span>
+    </div>
+    <div style="border-bottom: 1px solid #eee; margin-top: 15px;"></div><br>
+    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 20px;">
+        <span>Thành tiền</span><span>${formatPrice(finalTotal)}</span>
+    </div>
+
+    
+`);
+
+    // Cập nhật thông tin thanh toán
+    $("#payment-amount").text(formatPrice(finalTotal));
+    $("#payment-content").text(res.order.order_id || "");
+      } else {
+      alert(res.error || "Không tìm thấy thông tin đơn hàng.");
+    }
+  }, "json");
+
+
+        //Thanh toán khi nhận hàng (COD) hoặc chuyển khoản ngân hàng
+        $('input[name="payment-method"]').on('change', function () {
+            const method = $(this).val(); // Mặc định là 'cod' nếu không có giá trị
+
+            if (method === 'cod') {
+                $('#bank-transfer-qr').hide();
+                $('#complete-order-btn').slideDown();
+            } else if (method === 'bank_transfer') {
+                $('#bank-transfer-qr').fadeIn();
+                $('#complete-order-btn').slideDown();
+            }
+        });
+
+        // Hiển thị popup thành công
+        function showSuccessPopup() {
+            $('#success-popup').fadeIn();
+        }
+
+        // Nếu thêm nút đóng:
+        $('#close-success-popup').on('click', function () {
+            $('#success-popup').fadeOut();
+            window.location.href = "../LANDING-PAGE/landingpage.html"; // chuyển về trang chủ hoặc trang khác
+        });
+
+        $('#complete-order-btn').on('click', function () {
+    // Lấy phương thức thanh toán được chọn
+    const selectedPayment = $('input[name="payment-method"]:checked').val();
+    // Lấy ghi chú nếu có (nếu có input cho note)
+    const note = $('#input_note').val();
+    // Lấy mã đơn hàng (có thể từ biến res.order.order_id nếu đã được render)
+    const orderId = $(".order-id").text().replace("Mã đơn hàng: ", "").trim();
+
+    $.ajax({
+        url: "../CHECKOUT/Order_detail.php",
+        type: "POST",
+        data: JSON.stringify({
+            action: "complete_order",
+            payment_method: selectedPayment,
+            order_id: orderId, 
+            note: note 
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        success: function(res) {
+            if (res.success) {
+                showSuccessPopup();
+            } else {
+                alert(res.error || "Có lỗi xảy ra khi lưu đơn hàng!");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("Lỗi kết nối server: " + error + "\n" + xhr.responseText);
+        }
+    });
+});
+});
+    </script>
+
+        
+    
+    <!-- Nút xổ xuống của Tóm tắt đơn hàng -->
+    <script>
+    $(document).ready(function () {
+        $('#toggle-btn').click(function () {
+            $('#summary-details').slideToggle(300);
+            const icon = $('#toggle-icon');
+            icon.toggleClass('fa-chevron-down fa-chevron-up');
+        });
+    });
+    </script>
+        
+
+    
+    
+    <div id="footer-placeholder"></div>      
+    <script>
+        // Tải nội dung Header vào phần tử #header-placeholder
+      $(function () {
+        $("#header-placeholder").load("../HEADER-FOOTER/Header.html");
+      });
+
+      // Tải nội dung Footer vào phần tử #footer-placeholder
+      $(function () {
+        $("#footer-placeholder").load("../HEADER-FOOTER/Footer.html");
+      });
+    </script>
+</body>
+</html>
